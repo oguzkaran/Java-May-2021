@@ -1,5 +1,4 @@
-Link            : 
-Kısa Link       : http://bit.do/java-may-2021
+Link            : https://www.dropbox.com/sh/smmbnpmggq2uaqp/AAAyHMkzDYCC7PwCoPvbrVKAa?dl=0
 Github          : https://github.com/oguzkaran/Java-May-2021
 
 
