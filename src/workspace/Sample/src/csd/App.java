@@ -1,18 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Java'da içerisine değer verilmemiş bir değişken kullanılamaz yani içerisinde değer varmış gibi işleme sokulamaz.
-	Yerel değişkelere değer verme programcının sorumluğundadır
+	void metotlar geri dönüş değeri varmış gibi çağrılamaz. Yani void metot çağrısı geri dönüş değeri varmış gibi
+	işleme sokulamaz
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
-	public static void main(String [] args)
+	public static void main(String [] args) 
 	{
-		int a;
-		int b;
-		
-		b = a * 2; //error
-		
-		System.out.println(a); //error
+		NumberUtil.displaySquare();
+		NumberUtil.displaySquare();
 	}
 }
+
+
+class NumberUtil {
+	public static void displaySquare()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());	
+		
+		System.out.println(val * val);
+		//...
+	}
+}
+
 
