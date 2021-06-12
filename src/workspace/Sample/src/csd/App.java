@@ -1,38 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	Aşağıdaki örnekte işlem sırası ile operatörlerinm öncelik sırası aynıdır. Yine en soldaki yapılır.
+	 Aşağıdaki koşullar ayrık olmadığından örnek bazında else-if yapılması zaten yanlış olur
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		boolean result;
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());
 		
-		result = Sample.bar() || Sample.foo() && Sample.tar();
+		if (val > 11)
+			System.out.println("val > 11");
+		if (val > 15)
+			System.out.println("val > 15");
+		if (val > 30)
+			System.out.println("val > 30");
+
 		
-		System.out.printf("result = %b%n", result);
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class Sample {
-	public static boolean foo()
-	{
-		System.out.println("foo");
-		
-		return true;
-	}
-	
-	public static boolean bar()
-	{
-		System.out.println("bar");
-		
-		return false;
-	}
-	
-	public static boolean tar()
-	{
-		System.out.println("tar");
-		
-		return false;
-	}
-}
+
+
