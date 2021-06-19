@@ -1,49 +1,50 @@
-/*----------------------------------------------------------------------------------------------------------------------	
- 	Sınıf Çalışması: Yukarıdaki örnekte pozitif negatif sayılardan kaç tane girildiğini de bulan şekilde programı
- 	güncelleyiniz
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren countDigits isimli metodu
+ 	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+ 	
+ 	Örnekteki test kodunda sonsuz döngüye girilmiş ve bir koşula bağlı olarak run metodu sonlandırılmıştır. Bu durumda
+ 	sonsuz döngüden de çıkılmış olur 	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		FindPosNegSumApp.run();
+		CountDigitsTest.run();
 	}
 }
 
-class FindPosNegSumApp {
-	public static void displayResult(int posSum, int posCount, int negSum, int negCount)
-	{
-		if (posSum != 0)
-			System.out.printf("%d tane pozitif sayının toplamı:%d%n", posCount, posSum);		
-		else
-			System.out.println("Hiç pozitif sayı girmediniz");
-		
-		if (negSum != 0) 
-			System.out.printf("%d tane negatif sayının toplamı:%d%n", negCount, negSum);		
-		else
-			System.out.println("Hiç negatif sayı girmediniz");
-	}
-	
+
+class CountDigitsTest {
 	public static void run()
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.println("Sayıları girmeye başlayınız:");
+		java.util.Scanner kb = new java.util.Scanner(System.in);	
 		
-		int posSum = 0, negSum = 0;
-		int posCount = 0, negCount = 0;
-		int val;
-		
-		while ((val = Integer.parseInt(kb.nextLine())) != 0)
-			if (val > 0) {
-				posSum += val;
-				++posCount;
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int val = Integer.parseInt(kb.nextLine());			
+			int count = NumberUtil.countDigits(val);
+			
+			System.out.printf("%d sayısının basamak sayısı:%d%n", val, count);
+			
+			if (val == 0) {
+				System.out.println("Tekrar yapıyor musunuz?");
+				return;
 			}
-			else {				
-				negSum += val;
-				++negCount;
-			}
+		}		
+	}
+}
+
+class NumberUtil {
+	public static int countDigits(int val)
+	{		
+		int count = 0;
+	
+		do {
+			++count;
+			val /= 10;
+		} while (val != 0);					
 		
-		displayResult(posSum, posCount, negSum, negCount);		
+		return count;
 	}
 }
