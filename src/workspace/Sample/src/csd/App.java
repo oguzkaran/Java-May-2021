@@ -1,50 +1,43 @@
 /*----------------------------------------------------------------------------------------------------------------------
- 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren countDigits isimli metodu
- 	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz.
- 	
- 	Örnekteki test kodunda sonsuz döngüye girilmiş ve bir koşula bağlı olarak run metodu sonlandırılmıştır. Bu durumda
- 	sonsuz döngüden de çıkılmış olur 	
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerini döndüren factorial isimli 
+	metodu NumberUtil sınıfı içersinde yazınız ve aşağıdaki kodu ile test ediniz.
+	
+	0! = 1
+	1! = 1
+	1! 1 * 2
+	
+	...
+	
+	n! = 1 * 2 * ... * (n - 1) * n	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		CountDigitsTest.run();
+		FactorialTest.run();
 	}
 }
 
 
-class CountDigitsTest {
+class FactorialTest {
 	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);	
+	{		
+		int n = 13;
 		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());			
-			int count = NumberUtil.countDigits(val);
-			
-			System.out.printf("%d sayısının basamak sayısı:%d%n", val, count);
-			
-			if (val == 0) {
-				System.out.println("Tekrar yapıyor musunuz?");
-				return;
-			}
-		}		
+		for (int i = 0; i <= n; ++i)
+			System.out.printf("%d! = %d%n", i, NumberUtil.factorial(i));
 	}
 }
 
 class NumberUtil {
-	public static int countDigits(int val)
-	{		
-		int count = 0;
-	
-		do {
-			++count;
-			val /= 10;
-		} while (val != 0);					
+	public static int factorial(int n)
+	{
+		int result = 1;
 		
-		return count;
-	}
+		for (int i = n; i >= 2; --i)
+			result *= i;
+		
+		return result;
+	}	
 }
