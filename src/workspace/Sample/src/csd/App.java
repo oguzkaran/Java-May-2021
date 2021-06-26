@@ -1,43 +1,100 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerini döndüren factorial isimli 
-	metodu NumberUtil sınıfı içersinde yazınız ve aşağıdaki kodu ile test ediniz.
-	
-	0! = 1
-	1! = 1
-	1! 1 * 2
-	
-	...
-	
-	n! = 1 * 2 * ... * (n - 1) * n	
+	Basit bir menü uygulaması iskeleti
+	(İleride daha iyileri yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{	
-		FactorialTest.run();
+	{			
+		MenuApp.run();				
 	}
 }
 
-
-class FactorialTest {
+class MenuApp {
 	public static void run()
-	{		
-		int n = 13;
-		
-		for (int i = 0; i <= n; ++i)
-			System.out.printf("%d! = %d%n", i, NumberUtil.factorial(i));
+	{
+		Menu.run();		
 	}
 }
 
-class NumberUtil {
-	public static int factorial(int n)
+class Menu {
+	public static void displayMenu()
 	{
-		int result = 1;
+		System.out.println("1.Ekle");		
+		System.out.println("2.Sil");
+		System.out.println("3.Güncelle");
+		System.out.println("4.Listele");
+		System.out.println("5.Çıkış");
+		System.out.print("Seçenek:");
+	}
+	
+	public static void doWorkForInsert()
+	{
+		System.out.println("--------------------");
+		System.out.println("Ekle");
+		System.out.println("--------------------");
+		//...
+	}
+	
+	public static void doWorkForDelete()
+	{
+		System.out.println("--------------------");
+		System.out.println("Sil");
+		System.out.println("--------------------");
+		//...
+	}
+	
+	
+	public static void doWorkForUpdate()
+	{
+		System.out.println("--------------------");
+		System.out.println("Güncelle");
+		System.out.println("--------------------");
+		//...
+	}
+	
+	public static void doWorkForList()
+	{
+		System.out.println("--------------------");
+		System.out.println("Listele");
+		System.out.println("--------------------");
+		//...
+	}
+	
+	public static void doWorkFor(int option)
+	{
+		if (option == 1)
+			doWorkForInsert();
+		else if (option == 2)
+			doWorkForDelete();
+		else if (option == 3)
+			doWorkForUpdate();
+		else		
+			doWorkForList();
+	}
+	
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		for (int i = n; i >= 2; --i)
-			result *= i;
+		for (;;) {
+			displayMenu();
+			int option = Integer.parseInt(kb.nextLine());
+			
+			if (1 <= option && option <= 5) {			
+				if (option == 5)
+					break;
+				
+				doWorkFor(option);
+			}
+			else
+				System.out.println("Geçersiz seçenek");
+		}
 		
-		return result;
-	}	
+		System.out.println("Teşekkürler");
+		System.out.println("Tekrar yapıyor musunuz?");
+		System.out.println("C ve Sistem Programcıları Derneği");
+	}
 }
+
