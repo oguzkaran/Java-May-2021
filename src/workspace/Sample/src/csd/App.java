@@ -8,7 +8,7 @@
 		günlerine karşılık gelir
 		- 1.1.1900 öncesindeki tarihler geçersizler kabul edilir		
 		- Parametresi ile aldığı gün, ay ve yıl bilgilerine ilişkin tarihin hafta sonu olup olmadığını test eden isWeekend
-		ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız. Metotlar tarih geçerliliği kontrolü yapmayacaktır
+		ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız. Metotlar tarih geçerliliği kontrolü yapmayacaktır		
 	(İleride daha iyisi yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
@@ -16,11 +16,11 @@ package csd;
 class App {
 	public static void main(String [] args) 
 	{			
-		IsValidDateTest.run();				
+		DateUtilTest.run();				
 	}
 }
 
-class IsValidDateTest {
+class DateUtilTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -82,12 +82,23 @@ class DateUtil {
 		if (isWeekend(day, month, year))
 			System.out.println("Bugün kurs var tekrara yaptınız mı?");
 		else
-			System.out.println("Kurs günü yaklaşıyor. Tekrar yapmayıunutmayınız");
+			System.out.println("Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız");
 	}
 	
 	public static int getDayOfWeek(int day, int month, int year)
 	{
+		int totalDays;
 		
+		if (year < 1900 || (totalDays = getDayOfYear(day, month, year)) == -1)
+			return -1;
+		
+		for (int y = 1900; y < year; ++y) {
+			totalDays += 365;
+			if (isLeapYear(y))
+				++totalDays;
+		}
+		
+		return totalDays % 7;
 	}
 	
 	public static boolean isWeekend(int day, int month, int year)
@@ -102,7 +113,7 @@ class DateUtil {
 		return !isWeekend(day, month, year);
 	}
 	
-	public static int getFDayOfYear(int day, int month, int year)
+	public static int getDayOfYear(int day, int month, int year)
 	{
 		if (!isValidDate(day, month, year))
 			return -1;
