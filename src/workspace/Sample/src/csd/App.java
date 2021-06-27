@@ -1,46 +1,32 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	Homework-001-3. sorunun bir çözümü
+/*----------------------------------------------------------------------------------------------------------------------	
+	Yukarıda anlatılan byte, short ve char türlerine ilişkin istisna kurallar metot çağrısında argümanlardan 
+	parametrelere yapılan atama işleminde geçersizdir. Bu durumun detayları ileride ele alınacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{			
-		SignumTest.run();
+		Sample.foo(10); // error
+		Sample.bar(23); // error
+		Sample.tar(23); // error		
 	}
 }
 
-class SignumTest {
-	public static void run()
+class Sample {
+	public static void foo(short val)
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int a = Integer.parseInt(kb.nextLine());
-		
-			
-			System.out.printf("signum(%d) = %d%n", a, NumberUtil.signum(a));
-			
-			if (a == 0)
-				break;				
-		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
-	}
-}
-
-class NumberUtil {
-	public static int signum(int val)
-	{
-		if (val > 0)
-			return 1;
-		
-		if (val == 0)
-			return 0;
-		
-		return -1;
+		//...		
 	}	
+	
+	public static void bar(byte val)
+	{
+		//...		
+	}
+	
+	public static void tar(char c)
+	{
+		//...
+	}
 }
-
 
