@@ -1,32 +1,17 @@
-/*----------------------------------------------------------------------------------------------------------------------	
-	Yukarıda anlatılan byte, short ve char türlerine ilişkin istisna kurallar metot çağrısında argümanlardan 
-	parametrelere yapılan atama işleminde geçersizdir. Bu durumun detayları ileride ele alınacaktır
-----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{			
-		Sample.foo(10); // error
-		Sample.bar(23); // error
-		Sample.tar(23); // error		
+	{	
+		double a;
+		int b;
+		
+		a = 5_000_000_000.567;
+		
+		b = (byte)a;
+		
+		System.out.printf("(byte)5000000000 = %d%n", (byte)5_000_000_000L);
+		System.out.printf("(byte)2147483647 = %d%n", (byte)2147483647);
+		System.out.printf("b = %d%n", b);		
 	}
 }
-
-class Sample {
-	public static void foo(short val)
-	{
-		//...		
-	}	
-	
-	public static void bar(byte val)
-	{
-		//...		
-	}
-	
-	public static void tar(char c)
-	{
-		//...
-	}
-}
-
