@@ -1,17 +1,46 @@
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Metot çağrısında argümanlar ile parametrelerinin türlerinin birebir uyumlu olduğu bir metot sınıfta varsa o çağrılır
+ 	(best match) 
+----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		double a;
-		int b;
+		int a = 10;
+		double b = 20;
 		
-		a = 5_000_000_000.567;
-		
-		b = (byte)a;
-		
-		System.out.printf("(byte)5000000000 = %d%n", (byte)5_000_000_000L);
-		System.out.printf("(byte)2147483647 = %d%n", (byte)2147483647);
-		System.out.printf("b = %d%n", b);		
+		Sample.foo(a, b);
 	}
 }
+
+
+class Sample {
+	public static void foo(double a, int b) //imza: foo, double, int
+	{
+		System.out.println("Sample.foo(double, int)");		
+	}	
+	
+	public static void foo(int b, double a) //imza: foo, int, double
+	{
+		System.out.println("Sample.foo(int, double)");
+	}
+	
+	public static void foo(int a) //imza:foo, int
+	{
+		System.out.println("Sample.foo(int)");
+	}
+	
+	public static void foo() //imza: foo
+	{
+		System.out.println("Sample.foo()");
+	}
+	
+	public static void bar() //imza: bar
+	{
+		System.out.println("Sample.bar()");
+	}
+}
+
+
+
