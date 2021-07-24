@@ -1,38 +1,44 @@
 /*---------------------------------------------------------------------------------------------------------------------- 	 
-	Sınıfın non-static veri elemanlarına sınıf dışından (başka bir sınıfın içinden) referans ve nokta operatörü ile
-	erişilebilir. Sınıfın non-static veri elemanları her nesne için ayrıca nesnenin içerisinde yaratılırlar. İşte sınıf
-	dışından referans ile erişilen eleman o referansın gösterdiği nesnenin elemanıdır. Her new işlemi yeni bir nesne
-	yaratılmasına yol açar. Aşağıdaki kodu çalıştırıp sonucu gözlemleyiniz 
+	 Referans parametreli metotlar yazılabilir. Metot içerisinde referans parametresine geçilen adrese ilişkin
+	 nesneye erişilebilir. Nesne üzerinde değişiklik yapılabilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{
-		Sample s, k;
+	{	
+		Date birthDate = new Date();
 		
-		s = new Sample();
-		k = new Sample();
+		birthDate.day = 10;
+		birthDate.month = 9;
+		birthDate.year = 1976;
 		
-		s.a = 10;
-		s.b = true;
+		DateUtil.display(birthDate);
 		
-		k.a = 20;
-		k.b = false;
+		DateUtil.changeDate(birthDate, 11, 7, 1983);
 		
-		System.out.printf("s.a = %d%n", s.a);
-		System.out.printf("s.b = %b%n", s.b);
+		DateUtil.display(birthDate);
 		
-		System.out.printf("k.a = %d%n", k.a);
-		System.out.printf("k.b = %b%n", k.b);
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class Sample {
-	public int a;
-	public boolean b;
-	//...
+class DateUtil {
+	public static void changeDate(Date d, int day, int month, int year)
+	{
+		//...
+		d.day = day;
+		d.month = month;
+		d.year = year;
+	}
+	
+	public static void display(Date d)
+	{
+		System.out.printf("%02d/%02d/%04d%n", d.day, d.month, d.year);
+	}
 }
 
-
-
+class Date {
+	public int day, month, year;
+	//...
+}
