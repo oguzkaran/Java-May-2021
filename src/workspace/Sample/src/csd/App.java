@@ -1,65 +1,24 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	 Sınıf Çalışması: Katsayıları klavyeden girilen ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
-	 programı yazınız
+	 Random sınıfının nextDouble metodu [min, max) aralığında rasgele double türden sayı üretilmesi	 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{	
-		EquationSolverApp.run();		
-	}
-}
-
-class EquationSolverApp {
-	public static void run()
-	{
+	{			
+		java.util.Random r = new java.util.Random();
 		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.println("İkinci dereceden denklemin katsayılarını giriniz:");
-		System.out.print("a?");
-		double a = Double.parseDouble(kb.nextLine());
 		
-		System.out.print("b?");
-		double b = Double.parseDouble(kb.nextLine());
+		System.out.print("Birinci sayıyı giriniz:");
+		double min = Double.parseDouble(kb.nextLine());
 		
-		System.out.print("c?");
-		double c = Double.parseDouble(kb.nextLine());
+		System.out.print("İkinci sayıyı giriniz:");
+		double max = Double.parseDouble(kb.nextLine());
 		
-		RootInfo result = EquationSolver.findRoots(a, b, c);
 		
-		if (result.exists)
-			System.out.printf("x1 = %f, x2 = %f%n", result.x1, result.x2);
-		else
-			System.out.println("Gerçek kök yok");
-		
-		System.out.println("Tekrar yapıyor musunuz?");
+		for (int i = 0; i < 10; ++i)
+			System.out.printf("%.10f%n", r.nextDouble() * (max - min) + min); //[mi, max)	
 	}
 }
 
-class RootInfo {
-	public double x1, x2;
-	public boolean exists;
-}
 
-class EquationSolver {
-	public static double getDelta(double a, double b, double c)
-	{
-		return b * b - 4 * a * c;
-	}
-	
-	public static RootInfo findRoots(double a, double b, double c)
-	{
-		double delta = getDelta(a, b, c);
-		RootInfo result = new RootInfo();	
-		
-		if (delta >= 0) {
-			double sqrtDelta = Math.sqrt(delta);
-			
-			result.x1 = (-b + sqrtDelta) / (2 * a);
-			result.x2 = (-b - sqrtDelta) / (2 * a);
-			result.exists = true;						
-		}		
-		
-		return result;				
-	}
-}
