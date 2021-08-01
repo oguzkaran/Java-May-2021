@@ -1,31 +1,40 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	 Aşağıdaki örnekte rasgele üretilen ilk 10 sayının dizilimi her çalıştırmada farklı olur. Dizilimin aynı gelme 
-	 olasılığı çok düşüktür. İkinci üretilen 10 sayı klavyeden alınan tohum değerine göre üretilir. Bu durumda örneğin
-	 her çalıştırmada tohum değeri 100 girildiğinde ikinci 10 sayının dizilimi aynı olacaktır. Kodu çalıştırıp
-	 sonucu gözlemleyiniz 	   
+	ctor içerisinde veri elemanlarına değer ataması çok kullanılır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{		
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		java.util.Random r = new java.util.Random();		
+	{	
+		Sample s1 = new Sample(-10, true);
+		Sample s2 = new Sample(20);
 		
-		System.out.print("Bir sayı giriniz:");
-		long seed = Long.parseLong(kb.nextLine());
+		System.out.printf("s1.x = %d%n", s1.x);
+		System.out.printf("s1.y = %b%n", s1.y);
 		
-		for (int i = 0; i < 10; ++i)
-			System.out.printf("%02d ", r.nextInt(100));
-		
-		System.out.println();
-		
-		r.setSeed(seed);
-		
-		for (int i = 0; i < 10; ++i)
-			System.out.printf("%02d ", r.nextInt(100));
-		
-		System.out.println();
+		System.out.printf("s2.x = %d%n", s2.x);
+		System.out.printf("s2.y = %b%n", s2.y);
+		//...
 	}
 }
 
+
+class Sample {
+	public int x;
+	public boolean y;	
+	
+	public Sample(int a)
+	{
+		x = Math.abs(a);		
+	}
+	
+	public Sample(int a, boolean b)
+	{
+		x = Math.abs(a);
+		y = b;
+	}
+	
+	
+		
+	//...
+}
