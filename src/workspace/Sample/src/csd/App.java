@@ -1,121 +1,72 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	Complex sınıfı ve test kodu
+	Homework-004 için "Referans parametreli metotlar" konusu öğrenildiğinde yapılabilcek bir çözüm
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		Complex z1, z2;
-		Complex result;
-		
-		z1 = new Complex(3, 4);
-		z2 = new Complex(6.7, 9.8);
-		
-		z1.display();
-		z2.display();
-		
-		result = z1.subtract(z2);
-		
-		result.display();
-		
-		result = z1.subtract(3.4);
-		
-		result.display();
-		
-		result = Complex.subtract(3.4, z1);
-		
-		result.display();		
+		CalculateSumCountMaxMinApp.run();
 	}
 }
 
-
-class Complex {
-	public double real;
-	public double imag;
+class CalculateSumCountMaxMinApp {	
+	public static int getValue(java.util.Scanner kb)
+	{
+		for (;;) {
+			System.out.println("Bir tamsayı giriniz:");
+			int val = Integer.parseInt(kb.nextLine());
+			
+			if (0 <= val && val <= 100)
+				return val;
+			
+			System.out.println("Geçersiz değer girdiniz!...Yeni bir değer giriniz:");
+		}
+	}
 	
-	public static Complex add(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
-	{		
-//		Complex result = new Complex(real1 + real2, imag1 + imag2);
-//		
-//		return result;
+	public static int getOption(java.util.Scanner kb)
+	{
+		int option;
 		
-		return new Complex(real1 + real2, imag1 + imag2);
+		do 
+			option = Integer.parseInt(kb.nextLine());
+		while (option != 0 && option != 1);
+		
+		return option;
 	}
 	
-	public static Complex subtract(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
+	public static void displayReport(int count, int sum, int min, int max)
 	{
-		return add(real1, imag1, -real2, -imag2);				
+		System.out.printf("Toplam %d değer girildi%n", count);
+		System.out.printf("Max = %d%n", max);
+		System.out.printf("Min = %d%n", min);
+		System.out.printf("Ortalama = %f%n", (double)sum / count);
 	}
 	
-	public Complex()
-	{		
-	}	
-	
-	public Complex(Complex other)
+	public static void run()
 	{
-		real = other.real;
-		imag = other.imag;
-	}
-	
-	public Complex(double re)
-	{
-		real = re;
-	}
-	
-	public Complex(double re, double im)
-	{
-		real = re;
-		imag = im;
-	}
-	
-	public double getLength()
-	{
-		return getNorm();
-	}
-	
-	public double getNorm()
-	{
-		return Math.sqrt(real * real + imag * imag);
-	}	
-	
-	//add	
-	public static Complex add(double val, Complex right)
-	{
-		return add(val, 0, right.real, right.imag);
-	}
-	
-	public Complex add(Complex right)
-	{
-		return add(real, imag, right.real, right.imag);
-	}	
-	
-	public Complex add(double val)
-	{
-		return add(real, imag, val, 0);
-	}
-	
-	//subtract
-	public static Complex subtract(double val, Complex right)
-	{
-		return subtract(val, 0, right.real, right.imag);
-	}
-	
-	public Complex subtract(Complex right)
-	{
-		return subtract(real, imag, right.real, right.imag);
-	}	
-	
-	public Complex subtract(double val)
-	{
-		return subtract(real, imag, val, 0);
-	}
-	
-	public void display()
-	{
-		System.out.printf("|%.2f + i%.2f| = %f%n", real, imag, getNorm());		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		int count = 0;
+		int sum = 0;
+		int minVal = 100;
+		int maxVal = 0;	
+		int val;
+		
+		for (;;) {			
+			val = getValue(kb);			
+			++count;
+			sum += val;
+			minVal = Math.min(val, minVal);
+			maxVal = Math.max(val, maxVal);
+			
+			System.out.println("Yeni bir değer girmek istiyor musunuz?[Evet için 1(bir) Hayır için 0(sıfır) değerlerinden birini giriniz]");
+			int option = getOption(kb);			
+			if (option == 0)
+				break;			
+		}
+		
+		displayReport(count, sum, minVal, maxVal);
 	}
 }
-
 
 
