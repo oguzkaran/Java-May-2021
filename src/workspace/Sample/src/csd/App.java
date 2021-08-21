@@ -1,75 +1,32 @@
 /*---------------------------------------------------------------------------------------------------------------------- 	 
- 	 Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrom olup olmadığını test eden isPalindrome metodunu
- 	 yazınız ve aşağıdaki kod ile test ediniz. 
- 	 Palindrom: Yalnızca alfabetik karakterleri tersten okunduğunda aynı olan yazılara palindrom denir. Detaylar 
- 	 gözardı edilmesi koşuluyla bu tanım yazılabilir.
- 	 
- 	 Örnek: 
- 	 Ey Edip Adana'da pide ye 	-> eyedipadanadapideye
- 	 Anastas mum satsana 		-> anastasmumsatsana
- 	 Ali Papila					-> alipapila
- 	 
- 	 Açıklama: Örnek daha önce yazdığımız reverse metodu kullanılarak çok daha basit biçimde yazılabilirdi. Ancak 
- 	 daha önce de belirtildiği gibi reverse metodunun ilgili versiyonu sürekli String nesnesi yarattığından böyle bir
- 	 durumda tercih edilmesi uygun değildir. Ancak ileride reverse metodunu daha etkin hale getirdiğimizde kodu basitleştirmesi
- 	 açısından isPalindrome metodunda reverse kullanabileceğiz
+	Java 7 ile birlikte switch deyiminde String de kullanılabilmektedir. Bu durumda case bölümlerinin "String literal"
+	olması gerekir. String sınıfı switch deyimi ile kullanıldığında karşılaştırma equals metodu ile yapılır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{	
-		IsPalindromeTest.run();
-	}
-}
-
-class IsPalindromeTest {
-	public static void run()
-	{
+	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.println("Şehir isimini giriniz:");
+		String cityName = kb.nextLine();
 		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			String s = kb.nextLine();
-			
-			if ("elma".equals(s))
-				break;
-			
-			System.out.println(StringUtil.isPalindrome(s) ? "Palindrom" : "Palindrom değil");
-		}
+		switch (cityName.toLowerCase()) {
+		case "istanbul":
+		case "edirne":
+		case "tekirdağ":
+			System.out.println("Marmara bölgesi");
+			break;
+		case "zonguldak":
+		case "sinop":
+		case "bartın":
+			System.out.println("Batı karadeniz bölgesi");
+			break;
+		default:
+			System.out.println("Belirsiz isim");
+		}	
 	}
 }
 
-class StringUtil {	
-	public static boolean isPalindrome(String s)
-	{
-		int left = 0;
-		int right = s.length() - 1;
-		
-		while (left < right) {
-			char cLeft = Character.toLowerCase(s.charAt(left));
-			
-			if (!Character.isLetter(cLeft)) {
-				++left;
-				continue;
-			}
-			
-			char cRight = Character.toLowerCase(s.charAt(right));
-			
-			if (!Character.isLetter(cRight)) {
-				--right;
-				continue;
-			}
-			
-			if (cLeft != cRight)
-				return false;
-			
-			++left;
-			--right;
-		}
-		
-		return true;
-	}
-}
 
 
