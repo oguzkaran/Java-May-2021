@@ -20,7 +20,7 @@ public class Point {
 	
 	public Point(int a)
 	{
-		x = a;		
+		x = a;
 	}
 	
 	public Point(int a, int b)

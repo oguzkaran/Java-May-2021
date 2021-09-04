@@ -27,6 +27,23 @@ public class StringUtil {
         return i == length ? s : s.substring(0, i) + Character.toUpperCase(s.charAt(i)) + s.substring(i + 1).toLowerCase();
     }
 
+    public static String changeCase(String s)
+	{
+		String str = "";
+		int length = s.length();
+		
+		for (int i = 0; i < length; ++i) {
+			char ch = s.charAt(i);
+			
+			if (Character.isUpperCase(ch))
+				str += Character.toLowerCase(ch);
+			else
+				str += Character.toUpperCase(ch);
+		}	
+		
+		return str;
+	}
+    
     public static int countString(String s1, String s2)
     {
         int count = 0;
@@ -89,6 +106,25 @@ public class StringUtil {
     {
         return getRandomTextTR(new java.util.Random(), n);
     }
+    
+    public static boolean isJavaIdentifier(String s)
+	{
+		if (s.isBlank() || s.equals("_"))
+			return false;
+		
+		char ch = s.charAt(0);
+		
+		if (!Character.isJavaIdentifierStart(ch))
+			return false;
+		
+		int length = s.length();
+		
+		for (int i = 1; i < length; ++i) 
+			if (!Character.isJavaIdentifierPart(s.charAt(i)))
+				return false;	
+		
+		return true;			
+	}
 
     public static boolean isPalindrome(String s)
     {
@@ -185,6 +221,22 @@ public class StringUtil {
         return rev;
     }
 
+    
+    public static String squeeze(String s1, String s2)
+	{
+		String str = "";
+		int length = s1.length();
+		
+		for (int i = 0; i < length; ++i) {
+			char ch = s1.charAt(i);
+			
+			if (!s2.contains(ch + ""))
+				str += ch;
+		}			
+		
+		return str;
+	}
+    
     public static String trimLeading(String s)
     {
         int i;
