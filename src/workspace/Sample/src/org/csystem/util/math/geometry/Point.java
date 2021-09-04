@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------
+	FILE        : Point.java
+	AUTHOR      : Java-May-2021 Group
+	LAST UPDATE : 04.09.2021
+
+	Point class that represents the 2(two) dimensional point
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.util.math.geometry;
 
 public class Point {
