@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 04.09.2021
+	LAST UPDATE : 05.09.2021
 
 	Utility class for string operations
 
@@ -9,6 +9,8 @@
 	All Rights Free
 -----------------------------------------------------------------------*/
 package org.csystem.util.string;
+
+import java.util.Random;
 
 public class StringUtil {
     public static String capitalize(String s)
@@ -76,7 +78,7 @@ public class StringUtil {
         return result;
     }
 
-    public static String getRandomText(java.util.Random r, int n, String sourceText)
+    public static String getRandomText(Random r, int n, String sourceText)
     {
         String result = "";
         int length = sourceText.length();
@@ -87,24 +89,24 @@ public class StringUtil {
         return result;
     }
 
-    public static String getRandomTextEN(java.util.Random r, int n)
+    public static String getRandomTextEN(Random r, int n)
     {
         return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
     }
 
     public static String getRandomTextEN(int n)
     {
-        return getRandomTextEN(new java.util.Random(), n);
+        return getRandomTextEN(new Random(), n);
     }
 
-    public static String getRandomTextTR(java.util.Random r, int n)
+    public static String getRandomTextTR(Random r, int n)
     {
         return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
     }
 
     public static String getRandomTextTR(int n)
     {
-        return getRandomTextTR(new java.util.Random(), n);
+        return getRandomTextTR(new Random(), n);
     }
     
     public static boolean isJavaIdentifier(String s)

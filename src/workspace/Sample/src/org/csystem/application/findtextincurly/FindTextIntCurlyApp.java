@@ -15,10 +15,12 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.application.findtextincurly;
 
+import java.util.Scanner;
+
 class FindTextIntCurlyApp {
 	public static void run()
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);		
+		Scanner kb = new java.util.Scanner(System.in);		
 		
 		for (;;) {
 			System.out.print("Bir yazı giriniz:");
