@@ -3,12 +3,19 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
-    public static void display(int [] a)
+    public static void display(int n, int [] a)
     {
+        String fmt = String.format("%%0%dd ", n);
+
         for (int i = 0; i < a.length; ++i)
-            System.out.printf("%d ", a[i]);
+            System.out.printf(fmt, a[i]);
 
         System.out.println();
+    }
+
+    public static void display(int [] a)
+    {
+        display(1, a);
     }
 
     public static void display(double [] a)
@@ -50,6 +57,21 @@ public class ArrayUtil {
 
         for (int i = 0; i < halfLen; ++i)
             swap(a, i, a.length - 1 - i);
+    }
+
+    public static int [] reversed(int [] a)
+    {
+        int [] r = new int[a.length];
+
+        for (int i = a.length - 1; i >= 0; --i)
+            r[a.length - 1 - i] = a[i];
+
+        return r;
+    }
+
+    public static void shuffle(Random r, int [] a, int count)
+    {
+        
     }
 
     public static int sum(int [] a)

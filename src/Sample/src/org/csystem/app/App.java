@@ -1,31 +1,26 @@
-/*---------------------------------------------------------------------------------------------------------------------- 	 
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını ters yüz eden reverse isimli metodu
-	başka bir dizi kullanmadan yazınız
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını yine parametresi ile aldığı değer
+	karıştıran yani elemanlarının yerlerini değiştiren shuffle isimli metodu ArrayUtil sınıfı içerisinde yazınız ve
+	aşağıdaki kod ile test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.array.ArrayUtil;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static org.csystem.util.array.ArrayUtil.*;
-
 class App {
-	public static void main(String [] args) 
+	public static void main(String [] args)
 	{
-		ReverseIntArrayTest.run();
+		ShuffleIntArrayTest.run();
 	}
 }
 
-class ReverseIntArrayTest {
+class ShuffleIntArrayTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
-		System.out.print("Min değerini giriniz:");
-		int min = Integer.parseInt(kb.nextLine());
-
-		System.out.print("Max değerini giriniz:");
-		int max = Integer.parseInt(kb.nextLine());
-
 		Random r = new Random();
 
 		for (;;) {
@@ -35,34 +30,13 @@ class ReverseIntArrayTest {
 			if (n <= 0)
 				break;
 
-			int [] a = getRandomArray(r, n, min, max);
+			int [] a = ArrayUtil.getRandomArray(r, n, 0, 99);
 
-			display(a);
-			Util.reverse(a);
-			display(a);
+			ArrayUtil.display(2, a);
+			ArrayUtil.shuffle(r, a, 100);
+			ArrayUtil.display(2, a);
 		}
 
 		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
-
-class Util {
-	public static void reverse(int [] a)
-	{
-		int left = 0;
-		int right = a.length - 1;
-
-		while (left < right)
-			swap(a, left++, right--);
-	}
-
-	public static void swap(int [] a, int i, int k)
-	{
-		int temp = a[i];
-
-		a[i] = a[k];
-		a[k] = temp;
-	}
-}
-
-
