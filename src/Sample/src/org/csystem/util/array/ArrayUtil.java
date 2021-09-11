@@ -26,7 +26,8 @@ public class ArrayUtil {
 
     public static void fillRandomArray(Random r, int [] a, int min, int max)
     {
-
+        for (int i = 0; i < a.length; ++i)
+            a[i] = r.nextInt(max - min + 1) + min;
     }
 
     public static int [] getRandomArray(int n, int min, int max) //[min, max]
@@ -38,10 +39,14 @@ public class ArrayUtil {
     {
         int [] a = new int[n];
 
-        for (int i = 0; i < n; ++i)
-            a[i] = r.nextInt(max - min + 1) + min;
+        fillRandomArray(r, a, min, max);
 
         return a;
+    }
+
+    public static void reverse(int [] a)
+    {
+
     }
 
     public static int sum(int [] a)

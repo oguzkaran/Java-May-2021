@@ -1,24 +1,22 @@
 /*---------------------------------------------------------------------------------------------------------------------- 	 
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını parametresi ile aldığı min ve max değerleri
-	için [min, max] aralığında rasgele değerlerle dolduran fillRandomArray isimli metodunu ArrayUtil sınıfı içerisinde
-	yazınız aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını ters yüz eden reverse isimli metodu
+	başka bir dizi kullanmadan yazınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static org.csystem.util.array.ArrayUtil.display;
-import static org.csystem.util.array.ArrayUtil.fillRandomArray;
+import static org.csystem.util.array.ArrayUtil.*;
 
 class App {
 	public static void main(String [] args) 
 	{
-		FillRandomIntArrayTest.run();
+		ReverseIntArrayTest.run();
 	}
 }
 
-class FillRandomIntArrayTest {
+class ReverseIntArrayTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -37,10 +35,10 @@ class FillRandomIntArrayTest {
 			if (n <= 0)
 				break;
 
-			int [] a = new int[n];
+			int [] a = getRandomArray(r, n, min, max);
 
-			fillRandomArray(r, a, min, max);
-
+			display(a);
+			reverse(a);
 			display(a);
 		}
 
