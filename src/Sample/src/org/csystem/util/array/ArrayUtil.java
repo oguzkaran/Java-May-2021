@@ -46,7 +46,10 @@ public class ArrayUtil {
 
     public static void reverse(int [] a)
     {
+        int halfLen = a.length / 2;
 
+        for (int i = 0; i < halfLen; ++i)
+            swap(a, i, a.length - 1 - i);
     }
 
     public static int sum(int [] a)

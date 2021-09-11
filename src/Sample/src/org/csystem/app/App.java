@@ -38,11 +38,30 @@ class ReverseIntArrayTest {
 			int [] a = getRandomArray(r, n, min, max);
 
 			display(a);
-			reverse(a);
+			Util.reverse(a);
 			display(a);
 		}
 
 		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+class Util {
+	public static void reverse(int [] a)
+	{
+		int left = 0;
+		int right = a.length - 1;
+
+		while (left < right)
+			swap(a, left++, right--);
+	}
+
+	public static void swap(int [] a, int i, int k)
+	{
+		int temp = a[i];
+
+		a[i] = a[k];
+		a[k] = temp;
 	}
 }
 
