@@ -71,7 +71,8 @@ public class ArrayUtil {
 
     public static void shuffle(Random r, int [] a, int count)
     {
-        
+        while (count-- > 0)
+            swap(a, r.nextInt(a.length), r.nextInt(a.length));
     }
 
     public static int sum(int [] a)

@@ -77,6 +77,11 @@ public class NumberUtil {
 		
 		return 1;
 	}
+
+	public static int [] getDigits(long val)
+	{
+
+	}
 	
 	public static int getDigitsPowSum(int val)
 	{
