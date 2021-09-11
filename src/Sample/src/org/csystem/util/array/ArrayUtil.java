@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------
+	FILE        : ArrayUtil.java
+	AUTHOR      : Java-May-2021 Group
+	LAST UPDATE : 11.09.2021
+
+	Utility class for array operations
+
+	Copyleft (c) 1993 by C and System Programmers Association (CSD)
+	All Rights Free
+-----------------------------------------------------------------------*/
 package org.csystem.util.array;
 
 import java.util.Random;
