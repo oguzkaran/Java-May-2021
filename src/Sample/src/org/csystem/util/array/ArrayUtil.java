@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 11.09.2021
+	LAST UPDATE : 12.09.2021
 
 	Utility class for array operations
 
@@ -13,6 +13,67 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
+    public static void bubbleSortAscending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] > a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    public static void bubbleSortDescending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - 1 - i; ++k)
+                if (a[k] < a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    public static void selectionSortAscending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i) {
+            int min = a[i];
+            int minIndex = i;
+
+            for (int k = i + 1; k < a.length; ++k)
+                if (a[k] < min) {
+                    min = a[k];
+                    minIndex = k;
+                }
+            a[minIndex] = a[i];
+            a[i] = min;
+        }
+    }
+
+    public static void selectionSortDescending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i) {
+            int max = a[i];
+            int maxIndex = i;
+
+            for (int k = i + 1; k < a.length; ++k)
+                if (a[k] > max) {
+                    max = a[k];
+                    maxIndex = k;
+                }
+            a[maxIndex] = a[i];
+            a[i] = max;
+        }
+    }
+
+    public static void bubbleSort(int [] a)
+    {
+        bubbleSortAscending(a);
+    }
+
+    public static void bubbleSort(int [] a, boolean desc)
+    {
+        if (desc)
+            bubbleSortDescending(a);
+        else
+            bubbleSortAscending(a);
+    }
+
     public static void display(int n, int [] a)
     {
         String fmt = String.format("%%0%dd ", n);
@@ -79,6 +140,18 @@ public class ArrayUtil {
         return r;
     }
 
+    public static void selectionSort(int [] a)
+    {
+        selectionSortAscending(a);
+    }
+
+    public static void selectionSort(int [] a, boolean desc)
+    {
+        if (desc)
+            selectionSortDescending(a);
+        else
+            selectionSortAscending(a);
+    }
     public static void shuffle(Random r, int [] a, int count)
     {
         while (count-- > 0)
