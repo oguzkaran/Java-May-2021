@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 05.09.2021
+	LAST UPDATE : 18.09.2021
 
 	Utility class for string operations
 
@@ -9,6 +9,8 @@
 	All Rights Free
 -----------------------------------------------------------------------*/
 package org.csystem.util.string;
+
+import org.csystem.util.array.ArrayUtil;
 
 import java.util.Random;
 
@@ -31,19 +33,12 @@ public class StringUtil {
 
     public static String changeCase(String s)
 	{
-		String str = "";
-		int length = s.length();
+		char [] c = s.toCharArray();
 		
-		for (int i = 0; i < length; ++i) {
-			char ch = s.charAt(i);
-			
-			if (Character.isUpperCase(ch))
-				str += Character.toLowerCase(ch);
-			else
-				str += Character.toUpperCase(ch);
-		}	
+		for (int i = 0; i < c.length; ++i)
+		    c[i] = Character.isUpperCase(c[i]) ? Character.toLowerCase(c[i]) : Character.toUpperCase(c[i]);
 		
-		return str;
+		return String.valueOf(c);
 	}
     
     public static int countString(String s1, String s2)
@@ -80,13 +75,13 @@ public class StringUtil {
 
     public static String getRandomText(Random r, int n, String sourceText)
     {
-        String result = "";
         int length = sourceText.length();
+        char [] c = new char[n];
 
         for (int i = 0; i < n; ++i)
-            result += sourceText.charAt(r.nextInt(length));
+            c[i] = sourceText.charAt(r.nextInt(length));
 
-        return result;
+        return String.valueOf(c);
     }
 
     public static String getRandomTextEN(Random r, int n)
@@ -215,12 +210,11 @@ public class StringUtil {
 
     public static String reversed(String s)
     {
-        String rev = "";
+        char [] c = s.toCharArray();
 
-        for (int i = s.length() - 1; i >= 0; --i)
-            rev += s.charAt(i);
+        ArrayUtil.reverse(c);
 
-        return rev;
+        return String.valueOf(c);
     }
 
     
@@ -228,7 +222,7 @@ public class StringUtil {
 	{
 		String str = "";
 		int length = s1.length();
-		
+
 		for (int i = 0; i < length; ++i) {
 			char ch = s1.charAt(i);
 			

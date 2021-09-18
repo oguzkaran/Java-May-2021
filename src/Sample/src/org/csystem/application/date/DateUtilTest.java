@@ -11,14 +11,29 @@
 		ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız. Metotlar tarih geçerliliği kontrolü yapmayacaktır
 	(İleride daha iyisi yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
-package org.csystem.app;
+package org.csystem.application.date;
 
-import org.csystem.application.date.DateUtilTest;
-
-class App {
-	public static void main(String [] args)
+public class DateUtilTest {
+	public static void run()
 	{
-		DateUtilTest.run();
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Gün?");
+			int day = Integer.parseInt(kb.nextLine());
+			
+			if (day == 0)
+				break;
+			
+			System.out.print("Ay?");
+			int month = Integer.parseInt(kb.nextLine());
+			
+			System.out.print("Yıl?");
+			int year = Integer.parseInt(kb.nextLine());
+			
+			DateUtil.displayDateTR(day, month, year);
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
-

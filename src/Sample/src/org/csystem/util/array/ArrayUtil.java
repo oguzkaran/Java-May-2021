@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 12.09.2021
+	LAST UPDATE : 18.09.2021
 
 	Utility class for array operations
 
@@ -191,6 +191,14 @@ public class ArrayUtil {
             swap(a, i, a.length - 1 - i);
     }
 
+    public static void reverse(char [] c)
+    {
+        int halfLen = c.length / 2;
+
+        for (int i = 0; i < halfLen; ++i)
+            swap(c, i, c.length - 1 - i);
+    }
+
     public static int [] reversed(int [] a)
     {
         int [] r = new int[a.length];
@@ -236,5 +244,13 @@ public class ArrayUtil {
 
         a[i] = a[k];
         a[k] = temp;
+    }
+
+    public static void swap(char [] c, int i, int k)
+    {
+        char temp = c[i];
+
+        c[i] = c[k];
+        c[k] = temp;
     }
 }
