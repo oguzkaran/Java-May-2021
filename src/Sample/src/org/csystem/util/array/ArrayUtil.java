@@ -97,6 +97,20 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void drawHistogram(int [] data, int n, char ch) //[0, data.length - 1]
+    {
+        int nMax = max(data);
+
+        for (int i = 0; i < data.length; ++i) {
+            int count = (int)Math.floor(data[i] * n / (double)nMax);
+
+            while (count-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void fillRandomArray(int [] a, int min, int max)
     {
         fillRandomArray(new Random(), a, min, max);
@@ -106,6 +120,16 @@ public class ArrayUtil {
     {
         for (int i = 0; i < a.length; ++i)
             a[i] = r.nextInt(max - min + 1) + min;
+    }
+
+    public static int [] getHistogramData(int [] a, int n) //[0, n]
+    {
+        int [] counts = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++counts[a[i]];
+
+        return counts;
     }
 
     public static int [] getRandomArray(int n, int min, int max) //[min, max]
@@ -120,6 +144,26 @@ public class ArrayUtil {
         fillRandomArray(r, a, min, max);
 
         return a;
+    }
+
+    public static int max(int [] a)
+    {
+        int maxVal = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            maxVal = Math.max(maxVal, a[i]);
+
+        return maxVal;
+    }
+
+    public static int min(int [] a)
+    {
+        int minVal = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            minVal = Math.min(minVal, a[i]);
+
+        return minVal;
     }
 
     public static int partition(int [] a, int threshold)
@@ -169,6 +213,7 @@ public class ArrayUtil {
         else
             selectionSortAscending(a);
     }
+
     public static void shuffle(Random r, int [] a, int count)
     {
         while (count-- > 0)
