@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 11.09.2021
+	LAST UPDATE : 19.09.2021
 
 	Utility class for numeric operations
 
@@ -10,13 +10,51 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.number;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.log10;
-import static java.lang.Math.min;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 public class NumberUtil {
+	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+
+	public static int [] getDigits(long val, int n)
+	{
+		val = Math.abs(val);
+		int [] result = new int[val == 0 ? 1 : (int)(Math.log10(val) / n) + 1];
+
+		for (int i = result.length - 1; val != 0; result[i--] = (int)(val % (long)Math.pow(10, n)), val /= Math.pow(10, n))
+			;
+
+		return result;
+	}
+
+	public static String numberToText3DigitsTR(int val)
+	{
+		if (val == 0)
+			return "sıfır";
+
+		String text = val < 0 ? "eksi" : "";
+
+		val = Math.abs(val);
+
+		int a = val / 100;
+		int b = val % 100 / 10;
+		int c = val % 10;
+
+		if (a != 0) {
+			if (a != 1)
+				text += ones[a];
+			text += "yüz";
+		}
+
+		if (b != 0)
+			text += tens[b];
+
+		if (c != 0)
+			text += ones[c];
+
+		return text;
+	}
+
 	public static int calculateDigitalRoot(int val)
 	{
 		int root = abs(val);
@@ -80,19 +118,17 @@ public class NumberUtil {
 
 	public static int [] getDigits(long val)
 	{
-		int [] d = new int[countDigits(val)];
+		return getDigits(val, 1);
+	}
 
-		val = Math.abs(val);
-
-		for (int i = d.length - 1; i >= 0; d[i--] = (int)(val % 10), val /= 10)
-			;
-
-		return d;
+	public static int [] getDigitsInTwos(long val)
+	{
+		return getDigits(val, 2);
 	}
 
 	public static int [] getDigitsInThrees(long val)
 	{
-
+		return getDigits(val, 3);
 	}
 	
 	public static int getDigitsPowSum(int val)
@@ -179,8 +215,7 @@ public class NumberUtil {
 			return a;
 		
 		return c;					
-	}	
-	
+	}
 	
 	public static void printGoldbachPrimes(int val)
 	{
