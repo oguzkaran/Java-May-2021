@@ -150,6 +150,17 @@ public class ArrayUtil {
         return a;
     }
 
+    public static String join(String [] str, char delimiter)
+    {
+        return join(str, delimiter + "");
+    }
+
+    public static String join(String [] str, String delimiter)
+    {
+        //TODO:
+    }
+
+
     public static int max(int [] a)
     {
         int maxVal = a[0];

@@ -1,12 +1,8 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı en fazla üç basamaklı bir sayının Türkçe okunuşunu döndüren numberToText3DigitsTR
-	metodunu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz. Metot 3 basamaktan büyü sayılar
-	kontrol yapmayacaktır
-
-	123 -> yüzyirmiüç
-	345 -> üçyüzkırkbeş
-	103 -> yüzüç
-	230 -> ikiyüzotuz
+	Sınıf Çalışması: Klavyeden int türden bir n sayısı için değer isteyiniz. n elemanlı bir String dizisi yaratınız.
+	bu dizinin her bir elemanını rasgele uzunlukta rasgele üretilmiş yazılarla doldurunuz. Bu işlemden sonra ArrayUtil
+	sınıfı içerisinde yazacağınız parametresi ile aldığı bir String dizisinin elemanlarını, yine parametresi aldığı bir
+	ayraç ile birleştirilmiş bir String'e geri dönen join isimli metodu çağırarak sonucu ekrana yazdırınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
