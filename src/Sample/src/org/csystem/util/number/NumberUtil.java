@@ -92,7 +92,7 @@ public class NumberUtil {
 
 	public static int [] getDigitsInThrees(long val)
 	{
-		
+
 	}
 	
 	public static int getDigitsPowSum(int val)

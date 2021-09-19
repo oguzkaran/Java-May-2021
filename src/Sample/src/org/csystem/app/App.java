@@ -7,7 +7,6 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.application.date.DateUtilTest;
 import org.csystem.util.array.ArrayUtil;
 import org.csystem.util.number.NumberUtil;
 
@@ -16,7 +15,7 @@ import java.util.Scanner;
 class App {
 	public static void main(String [] args)
 	{
-		DateUtilTest.run();
+		GetDigitsInThreesTest.run();
 	}
 }
 
