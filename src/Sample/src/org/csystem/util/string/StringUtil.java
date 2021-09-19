@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 18.09.2021
+	LAST UPDATE : 19.09.2021
 
 	Utility class for string operations
 
@@ -15,6 +15,9 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class StringUtil {
+    public static String alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+    public static String alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
+
     public static String capitalize(String s)
     {
         return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -49,6 +52,27 @@ public class StringUtil {
             ;
 
         return count;
+    }
+
+    public static int countStringIgnoreCase(String s1, String s2)
+    {
+        return countString(s1.toLowerCase(), s2.toLowerCase());
+    }
+
+    public static void fillRandomStringArray(Random r, String [] str, int min, int max, String sourceText)
+    {
+        for (int i = 0; i < str.length; ++i)
+            str[i] = getRandomText(r, r.nextInt(max - min + 1) + min, sourceText);
+    }
+
+    public static void fillRandomStringArrayTR(Random r, String [] str, int min, int max)
+    {
+        fillRandomStringArray(r, str, min, max, alphabetTR);
+    }
+
+    public static void fillRandomStringArrayEN(Random r, String [] str, int min, int max)
+    {
+        fillRandomStringArray(r, str, min, max, alphabetEN);
     }
 
     public static String getLongestPalindrome(String text)
@@ -86,7 +110,7 @@ public class StringUtil {
 
     public static String getRandomTextEN(Random r, int n)
     {
-        return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
+        return getRandomText(r, n, alphabetTR);
     }
 
     public static String getRandomTextEN(int n)
@@ -96,14 +120,43 @@ public class StringUtil {
 
     public static String getRandomTextTR(Random r, int n)
     {
-        return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+        return getRandomText(r, n, alphabetEN);
     }
 
     public static String getRandomTextTR(int n)
     {
         return getRandomTextTR(new Random(), n);
     }
-    
+
+
+    public static String [] getRandomStringArrayTR(int n, int min, int max)
+    {
+        return getRandomStringArrayTR(new Random(), n, min, max);
+    }
+
+    public static String [] getRandomStringArrayTR(Random r, int n, int min, int max)
+    {
+        String [] result = new String[n];
+
+        fillRandomStringArrayTR(r, result, min, max);
+
+        return result;
+    }
+
+    public static String [] getRandomStringArrayEN(int n, int min, int max)
+    {
+        return getRandomStringArrayEN(new Random(), n, min, max);
+    }
+
+    public static String [] getRandomStringArrayEN(Random r, int n, int min, int max)
+    {
+        String [] result = new String[n];
+
+        fillRandomStringArrayEN(r, result, min, max);
+
+        return result;
+    }
+
     public static boolean isJavaIdentifier(String s)
 	{
 		if (s.isBlank() || s.equals("_"))
@@ -174,9 +227,43 @@ public class StringUtil {
         return isPangram(s.toLowerCase(), "abcdefghijklmnopqrstuvwxyz");
     }
 
-    public static int countStringIgnoreCase(String s1, String s2)
+    public static String join(String [] str)
     {
-        return countString(s1.toLowerCase(), s2.toLowerCase());
+        return join(str, ' ', false);
+    }
+
+    public static String join(String [] str, boolean removeEmpties)
+    {
+        return join(str, ' ', removeEmpties);
+    }
+
+    public static String join(String [] str, char delimiter)
+    {
+        return join(str, delimiter + "", false);
+    }
+
+    public static String join(String [] str, char delimiter, boolean removeEmpties)
+    {
+        return join(str, delimiter + "", removeEmpties);
+    }
+
+    public static String join(String [] str, String delimiter)
+    {
+        return join(str, delimiter, false);
+    }
+
+    public static String join(String [] str, String delimiter, boolean removeEmpties)
+    {
+        String result = "";
+
+        for (int i = 0; i < str.length; ++i) {
+            if (removeEmpties && str[i].isEmpty())
+                continue;
+
+            result += str[i] + delimiter;
+        }
+
+        return result.substring(0, result.length() - delimiter.length());
     }
 
     public static String padLeading(String s, int length, char ch)

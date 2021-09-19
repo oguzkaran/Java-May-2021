@@ -101,6 +101,13 @@ public class ArrayUtil {
         System.out.println();
     }
 
+
+    public static void display(String [] str)
+    {
+        for (int i = 0; i < str.length; ++i)
+            System.out.println(str[i]);
+    }
+
     public static void drawHistogram(int [] data, int n, char ch) //[0, data.length - 1]
     {
         int nMax = max(data);
@@ -149,17 +156,6 @@ public class ArrayUtil {
 
         return a;
     }
-
-    public static String join(String [] str, char delimiter)
-    {
-        return join(str, delimiter + "");
-    }
-
-    public static String join(String [] str, String delimiter)
-    {
-        //TODO:
-    }
-
 
     public static int max(int [] a)
     {
