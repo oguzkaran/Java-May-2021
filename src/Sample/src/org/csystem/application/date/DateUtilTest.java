@@ -32,6 +32,7 @@ public class DateUtilTest {
 			int year = Integer.parseInt(kb.nextLine());
 			
 			DateUtil.displayDateTR(day, month, year);
+			DateUtil.displayDateEN(day, month, year);
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");

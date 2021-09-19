@@ -89,6 +89,11 @@ public class NumberUtil {
 
 		return d;
 	}
+
+	public static int [] getDigitsInThrees(long val)
+	{
+		
+	}
 	
 	public static int getDigitsPowSum(int val)
 	{

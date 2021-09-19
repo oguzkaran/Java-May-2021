@@ -2,10 +2,15 @@ package org.csystem.application.date;
 
 public class DateUtil {
 	public static int [] daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
 	public static String [] monthsTR = {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
 							"Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
 
 	public static String [] daysOfWeekTR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+
+	public static String [] monthsEN = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+	public static String [] daysOfWeekEN = {"Sun", "mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 	public static void displayDateTR(int day, int month, int year)
 	{
@@ -19,6 +24,43 @@ public class DateUtil {
 		System.out.printf("%d %s %d %s%n", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
 
 		System.out.println(isWeekend(day, month, year) ? "Bugün kurs var tekrar yaptınız mı?" : "Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız");
+	}
+
+	public static void displayDateEN(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+
+		if (dayOfWeek == -1) {
+			System.out.println("Invalid date");
+			return;
+		}
+
+		System.out.printf("%d%s %s %d %s%n", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
+
+		System.out.println(isWeekend(day, month, year) ? "That is the course day. Did you review?" :
+				"Course day is coming. Do not forget to review");
+	}
+
+	public static String getDaySuffix(int day)
+	{
+		String suffix = "th";
+
+		switch (day) {
+			case 1:
+			case 21:
+			case 31:
+				suffix = "st";
+				break;
+			case 2:
+			case 22:
+				suffix = "nd";
+				break;
+			case 3:
+			case 23:
+				suffix = "rd";
+		}
+
+		return suffix;
 	}
 	
 	public static int getDayOfWeek(int day, int month, int year)
