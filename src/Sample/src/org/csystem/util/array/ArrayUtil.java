@@ -295,7 +295,12 @@ public class ArrayUtil {
 
     public static int sum(int [][] a)
     {
-        
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += sum(a[i]);
+
+        return total;
     }
 
     public static void swap(int [] a, int i, int k)
