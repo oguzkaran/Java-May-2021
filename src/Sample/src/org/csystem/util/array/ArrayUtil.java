@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 19.09.2021
+	LAST UPDATE : 25.09.2021
 
 	Utility class for array operations
 
@@ -101,6 +101,11 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void display(int n, int [][] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            display(n, a[i]);
+    }
 
     public static void display(String [] str)
     {
@@ -155,6 +160,41 @@ public class ArrayUtil {
         fillRandomArray(r, a, min, max);
 
         return a;
+    }
+
+    public static int [][] getRandomMatrix(int m, int n, int min, int max) //[min, max]
+    {
+        return getRandomMatrix(new Random(), m, n, min, max);
+    }
+
+    public static int [][] getRandomMatrix(Random r, int m, int n, int min, int max) //[min, max]
+    {
+        int [][] a = new int[m][];
+
+        for (int i = 0; i < m; ++i)
+            a[i] = getRandomArray(r, n, min, max);
+
+        return a;
+    }
+
+    public static int [][] getRandomSquareMatrix(int n, int min, int max) //[min, max]
+    {
+        return getRandomSquareMatrix(new Random(), n, min, max);
+    }
+
+    public static int [][] getRandomSquareMatrix(Random r, int n, int min, int max) //[min, max]
+    {
+        return getRandomMatrix(r, n, n, min, max);
+    }
+
+    public static boolean isMatrix(int [][] a)
+    {
+
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
+
     }
 
     public static int max(int [] a)
