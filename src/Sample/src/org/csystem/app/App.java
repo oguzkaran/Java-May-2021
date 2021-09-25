@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizisinin bir matris olup olmadığını test eden isMatrix
-	isimli metodu ve kare matris olup olmadığını test eden isSquareMatrix isimli metodu yazınız ve aşağıdaki kod ile
-	test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizi dizisinin elemanlarının toplamını döndüren
+	sum isimli metodu ArrayUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -13,28 +12,11 @@ import java.util.Scanner;
 class App {
 	public static void main(String [] args)
 	{
-		IsMatrixTest.run();
-		IsSquareMatrixTest.run();
+		SumTest.run();
 	}
 }
 
-
-class IsMatrixTest {
-	public static void run()
-	{
-		int [][] a = {{1, 2}, {3, 4, 5}, {6, 7}};
-		int [][] b = {{1, 2}, {3, 4}, {5, 6}};
-
-		System.out.println(ArrayUtil.isMatrix(a) ? "Matris" : "Matris değil");
-		System.out.println(ArrayUtil.isMatrix(b) ? "Matris" : "Matris değil");
-	}
-}
-class IsSquareMatrixTest {
-	public static int [][] getArray(Random r, int row, int col)
-	{
-		return r.nextBoolean() ? ArrayUtil.getRandomMatrix(r, row, col, 0, 99) : ArrayUtil.getRandomSquareMatrix(r, row, 0, 99);
-	}
-
+class SumTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -49,10 +31,10 @@ class IsSquareMatrixTest {
 			System.out.print("Sütun sayısını giriniz:");
 			int n = Integer.parseInt(kb.nextLine());
 
-			int [][] a = getArray(r, m, n);
+			int [][] a = ArrayUtil.getRandomMatrix(r, m, n, 0, 99);
 			ArrayUtil.display(2, a);
 			System.out.println("------------------");
-			System.out.println(ArrayUtil.isSquareMatrix(a) ? "Kare matris" : "Kare matris değil");
+			System.out.printf("Toplam:%d%n", ArrayUtil.sum(a));
 		}
 	}
 }

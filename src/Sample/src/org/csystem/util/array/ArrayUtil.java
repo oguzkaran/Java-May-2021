@@ -189,12 +189,16 @@ public class ArrayUtil {
 
     public static boolean isMatrix(int [][] a)
     {
+        for (int i = 1; i < a.length; ++i)
+            if (a[i].length != a[0].length)
+                return false;
 
+        return true;
     }
 
     public static boolean isSquareMatrix(int [][] a)
     {
-
+        return isMatrix(a) && a.length == a[0].length;
     }
 
     public static int max(int [] a)
@@ -287,6 +291,11 @@ public class ArrayUtil {
             total += a[i];
 
         return total;
+    }
+
+    public static int sum(int [][] a)
+    {
+        
     }
 
     public static void swap(int [] a, int i, int k)
