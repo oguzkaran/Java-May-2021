@@ -62,7 +62,22 @@ public class DateUtil {
 
 		return suffix;
 	}
-	
+
+	public static String getDateTR(int day, int month, int year)
+	{
+		return String.format("%d %s %d %s", day, monthsTR[month], year, daysOfWeekTR[getDayOfWeek(day, month, year)]);
+	}
+
+	public static String getDayOfWeekTR(int day, int month, int year)
+	{
+		return daysOfWeekTR[getDayOfWeek(day, month, year)];
+	}
+
+	public static String getDayOfWeekEN(int day, int month, int year)
+	{
+		return daysOfWeekEN[getDayOfWeek(day, month, year)];
+	}
+
 	public static int getDayOfWeek(int day, int month, int year)
 	{
 		int totalDays;
