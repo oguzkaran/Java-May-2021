@@ -16,8 +16,8 @@ public class NumericLotteryApp {
 
             if (n <= 0)
                 break;
-            while (n-- > 0)
-                ArrayUtil.display(2, numericLottery.getNumbers());
+
+            ArrayUtil.display(2, numericLottery.getNumbers(n));
         }
 
         System.out.println("Tekrar yapıyor musunuz?");

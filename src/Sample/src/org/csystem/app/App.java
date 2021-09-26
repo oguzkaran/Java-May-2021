@@ -1,47 +1,24 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir kare matrisin esas köşegeni (diagonal) üzerindeki sayıların
-	toplamını döndüren sumDiagonal isimli metodu yazınız ve aşağıdaki kod ile test ediniz
-	Açıklamalar:
-	- Metot karematris olup olmadığına bakmayacaktır
-	- Bir kare matrisin esas köşegeni üzerindeki sayılar, örneğin:
-	1 2 3
-	4 5 6
-	7 8 9
-	matrisi için 1 5 ve 9'dur
+	Sınıf Çalışması: Bir okulda Matematik sınavı ortak olarak yapılıyor olsun. Kaç şube ve herbir şubede kaç öğrenci olduğu
+	bilgisi klavyeden alınsın. Öğrencilerin notları rasgele belirlensin. Tüm bu işlemlerden sonra Matematik sınavı
+	için herbir şubenin ayrı ayrı not ortalamaları ile okulun ortalamasını bulan basit bir simülasyon programını
+	yazınız. Programı mümkün olduğunca genel düşünerek yazmaya çalışınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.util.array.ArrayUtil;
-
-import java.util.Random;
-import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		SumDiagonalTest.run();
+		int [][][] a;
+
+		a = new int[3][4][5];
+
+		for (int i = 0; i < a.length; ++i)
+			for (int j = 0; j < a[i].length; ++j)
+				for (int k = 0; k < a[i][j].length; ++k)
+					a[i][j][k] = i + j + k;
+
+		//...
 	}
 }
-
-class SumDiagonalTest {
-	public static void run()
-	{
-		Scanner kb = new Scanner(System.in);
-		Random r = new Random();
-
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int n = Integer.parseInt(kb.nextLine());
-
-			if (n <= 0)
-				break;
-
-			int [][] a = ArrayUtil.getRandomSquareMatrix(r, n, 0, 99);
-			ArrayUtil.display(2, a);
-			System.out.println("------------------");
-			System.out.printf("Esas köşegen toplamı:%d%n", ArrayUtil.sumDiagonal(a));
-		}
-	}
-}
-
 
