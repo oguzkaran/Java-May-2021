@@ -82,8 +82,8 @@ public class ArrayUtil {
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf(fmt, a[i]);
+        for (int val : a)
+            System.out.printf(fmt, val);
 
         System.out.println();
     }
@@ -95,30 +95,30 @@ public class ArrayUtil {
 
     public static void display(double [] a)
     {
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf("%f", a[i]);
+        for (double val : a)
+            System.out.printf("%f", val);
 
         System.out.println();
     }
 
     public static void display(int n, int [][] a)
     {
-        for (int i = 0; i < a.length; ++i)
-            display(n, a[i]);
+        for (int [] array : a)
+            display(n, array);
     }
 
     public static void display(String [] str)
     {
-        for (int i = 0; i < str.length; ++i)
-            System.out.println(str[i]);
+        for (String s : str)
+            System.out.println(s);
     }
 
     public static void drawHistogram(int [] data, int n, char ch) //[0, data.length - 1]
     {
         int nMax = max(data);
 
-        for (int i = 0; i < data.length; ++i) {
-            int count = (int)Math.floor(data[i] * n / (double)nMax);
+        for (int val : data) {
+            int count = (int)Math.floor(val * n / (double)nMax);
 
             while (count-- > 0)
                 System.out.print(ch);
@@ -142,8 +142,8 @@ public class ArrayUtil {
     {
         int [] counts = new int[n + 1];
 
-        for (int i = 0; i < a.length; ++i)
-            ++counts[a[i]];
+        for (int val : a)
+            ++counts[val];
 
         return counts;
     }
@@ -287,8 +287,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += a[i];
+        for (int val : a)
+            total += val;
 
         return total;
     }
@@ -297,8 +297,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += sum(a[i]);
+        for (int [] array : a)
+            total += sum(array);
 
         return total;
     }

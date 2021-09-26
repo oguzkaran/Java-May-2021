@@ -1,24 +1,43 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Bir okulda Matematik sınavı ortak olarak yapılıyor olsun. Kaç şube ve herbir şubede kaç öğrenci olduğu
-	bilgisi klavyeden alınsın. Öğrencilerin notları rasgele belirlensin. Tüm bu işlemlerden sonra Matematik sınavı
-	için herbir şubenin ayrı ayrı not ortalamaları ile okulun ortalamasını bulan basit bir simülasyon programını
-	yazınız. Programı mümkün olduğunca genel düşünerek yazmaya çalışınız
+ 	 Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrom olup olmadığını test eden isPalindrome metodunu
+ 	 yazınız ve aşağıdaki kod ile test ediniz.
+ 	 Palindrom: Yalnızca alfabetik karakterleri tersten okunduğunda aynı olan yazılara palindrom denir. Detaylar
+ 	 gözardı edilmesi koşuluyla bu tanım yazılabilir.
+
+ 	 Örnek:
+ 	 Ey Edip Adana'da pide ye 	-> eyedipadanadapideye
+ 	 Anastas mum satsana 		-> anastasmumsatsana
+ 	 Ali Papila					-> alipapila
+
+ 	 Açıklama: Örnek daha önce yazdığımız reverse metodu kullanılarak çok daha basit biçimde yazılabilirdi. Ancak
+ 	 daha önce de belirtildiği gibi reverse metodunun ilgili versiyonu sürekli String nesnesi yarattığından böyle bir
+ 	 durumda tercih edilmesi uygun değildir. Ancak ileride reverse metodunu daha etkin hale getirdiğimizde kodu basitleştirmesi
+ 	 açısından isPalindrome metodunda reverse kullanabileceğiz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.string.StringUtil;
 
 class App {
 	public static void main(String [] args)
 	{
-		int [][][] a;
-
-		a = new int[3][4][5];
-
-		for (int i = 0; i < a.length; ++i)
-			for (int j = 0; j < a[i].length; ++j)
-				for (int k = 0; k < a[i][j].length; ++k)
-					a[i][j][k] = i + j + k;
-
-		//...
+		IsPalindromeTest.run();
 	}
 }
 
+class IsPalindromeTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+
+		for (;;) {
+			System.out.print("Bir yazı giriniz:");
+			String s = kb.nextLine();
+
+			if ("elma".equals(s))
+				break;
+
+			System.out.println(StringUtil.isPalindrome(s) ? "Palindrom" : "Palindrom değil");
+		}
+	}
+}
