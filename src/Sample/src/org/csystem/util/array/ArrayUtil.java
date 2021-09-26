@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 25.09.2021
+	LAST UPDATE : 26.09.2021
 
 	Utility class for array operations
 
@@ -317,5 +317,10 @@ public class ArrayUtil {
 
         c[i] = c[k];
         c[k] = temp;
+    }
+
+    public static int [][] transposed(int [][] a)
+    {
+        //TODO:
     }
 }

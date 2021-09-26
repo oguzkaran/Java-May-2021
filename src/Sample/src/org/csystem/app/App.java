@@ -1,6 +1,9 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizi dizisinin elemanlarının toplamını döndüren
-	sum isimli metodu ArrayUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir matrisin devriğini (transpose) döndüren transposed isimli
+	metodu ArrayUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+	Açıklamalar:
+	- Metot matris olup olmama kontrolü yapmayacaktır
+	- Matrisin devriği satırların sütun, sütunların satır yapılmasıdır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -12,11 +15,11 @@ import java.util.Scanner;
 class App {
 	public static void main(String [] args)
 	{
-		SumTest.run();
+		TransposedTest.run();
 	}
 }
 
-class SumTest {
+class TransposedTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -28,13 +31,15 @@ class SumTest {
 
 			if (m <= 0)
 				break;
+			
 			System.out.print("Sütun sayısını giriniz:");
 			int n = Integer.parseInt(kb.nextLine());
 
 			int [][] a = ArrayUtil.getRandomMatrix(r, m, n, 0, 99);
+			int [][] t = ArrayUtil.transposed(a);
 			ArrayUtil.display(2, a);
 			System.out.println("------------------");
-			System.out.printf("Toplam:%d%n", ArrayUtil.sum(a));
+			ArrayUtil.display(2, ArrayUtil.transposed(a));
 		}
 	}
 }
