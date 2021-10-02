@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 26.09.2021
+	LAST UPDATE : 02.10.2021
 
 	Utility class for string operations
 
@@ -73,6 +73,19 @@ public class StringUtil {
     public static void fillRandomStringArrayEN(Random r, String [] str, int min, int max)
     {
         fillRandomStringArray(r, str, min, max, alphabetEN);
+    }
+
+    public static String getLetters(String s)
+    {
+        String str = "";
+
+        char [] chars = s.toCharArray();
+
+        for (char c : chars)
+            if (Character.isLetter(c))
+                str += c; // İleride daha etkin olacak
+
+        return str;
     }
 
     public static String getLongestPalindrome(String text)
