@@ -1,33 +1,53 @@
 package org.csystem.application.findtextincurly;
 
 public class FindTextInCurly {
-	public String text;
-	public String result;
-	public boolean isValid;
+	private String m_text;
+	private String m_result;
+	private boolean valid;
 	
 	public FindTextInCurly(String txt)
 	{
-		text = txt;
-		result = text;
-		isValid = true;
+		m_text = txt;
+		m_result = m_text;
+		valid = true;
 	}
 	
 	public void findText()
 	{
 		for (;;) {
-			int begin = result.indexOf("{");
-			int end = result.lastIndexOf("}");
+			int begin = m_result.indexOf("{");
+			int end = m_result.lastIndexOf("}");
 			
 			if (begin == -1 && end != -1 || begin > end) {
-				isValid = false;
+				valid = false;
 				break;
 			}
 			
 			if (end == -1)
 				break;
 			
-			result = result.substring(begin + 1, end);
+			m_result = m_result.substring(begin + 1, end);
 		}
+	}
+
+	public String getText()
+	{
+		return m_text;
+	}
+
+	public void setText(String text)
+	{
+		m_text = text;
+	}
+
+	public String getResult()
+	{
+		return m_result;
+	}
+
+	public boolean isValid()
+	{
+		return valid;
 	}
 }
 

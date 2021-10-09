@@ -1,14 +1,14 @@
 package org.csystem.application.lotto;
 
 public class LottoProbabiltySimulation {
-	public int count;
-	public double game1Prob;
-	public double game2Prob;
-	public double game3Prob;
+	private int m_count;
+	private double m_game1Prob;
+	private double m_game2Prob;
+	private double m_game3Prob;
 	
 	public LottoProbabiltySimulation(int n)
 	{
-		count = n;
+		m_count = n;
 	}
 	
 	public void run()
@@ -19,21 +19,46 @@ public class LottoProbabiltySimulation {
 		
 		win1Count= win2Count = win3Count = 0;
 		
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < m_count; ++i) {
 			lotto.play();
 			
-			if (lotto.winGame1)
+			if (lotto.isWinGame1())
 				++win1Count;
 			
-			if (lotto.winGame2)
+			if (lotto.isWinGame2())
 				++win2Count;
 			
-			if (lotto.winGame3)
+			if (lotto.isWinGame3())
 				++win3Count;
 		}
 		
-		game1Prob = (double)win1Count / count;
-		game2Prob = (double)win2Count / count;
-		game3Prob = (double)win3Count / count;
+		m_game1Prob = (double)win1Count / m_count;
+		m_game2Prob = (double)win2Count / m_count;
+		m_game3Prob = (double)win3Count / m_count;
 	}
-} 
+
+	public int getCount()
+	{
+		return m_count;
+	}
+
+	public void setCount(int count)
+	{
+		m_count = count;
+	}
+
+	public double getGame1Prob()
+	{
+		return m_game1Prob;
+	}
+
+	public double getGame2Prob()
+	{
+		return m_game2Prob;
+	}
+
+	public double getGame3Prob()
+	{
+		return m_game3Prob;
+	}
+}

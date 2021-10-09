@@ -15,19 +15,19 @@ import static java.lang.Math.sqrt;
 
 
 public class Complex {
-	public double real;
-	public double imag;
-	
-	public static Complex add(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
+	private static Complex add(double real1, double imag1, double real2, double imag2)
 	{				
 		return new Complex(real1 + real2, imag1 + imag2);
 	}
 	
-	public static Complex subtract(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
+	private static Complex subtract(double real1, double imag1, double real2, double imag2)
 	{
 		return add(real1, imag1, -real2, -imag2);				
 	}
-	
+
+	public double real;
+	public double imag;
+
 	//...
 	
 	public Complex()

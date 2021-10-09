@@ -3,7 +3,7 @@ package org.csystem.application.studentinfoparser;
 import org.csystem.application.date.DateUtil;
 
 public class StudentInfoParser {
-    public StudentInfo studentInfo;
+    private StudentInfo m_studentInfo;
 
     public static String getBirthDate(String str)
     {
@@ -29,11 +29,16 @@ public class StudentInfoParser {
 
         //...
 
-        studentInfo = new StudentInfo();
-        studentInfo.name = studentInfoStr[0];
-        studentInfo.birthDate = getBirthDate(studentInfoStr[1]);
-        studentInfo.lectureName = studentInfoStr[2];
-        studentInfo.midtermGrade = Integer.parseInt(studentInfoStr[3]);
-        studentInfo.finalGrade = Integer.parseInt(studentInfoStr[4]);
+        m_studentInfo = new StudentInfo();
+        m_studentInfo.setName( studentInfoStr[0]);
+        m_studentInfo.setBirthDate(getBirthDate(studentInfoStr[1]));
+        m_studentInfo.setLectureName(studentInfoStr[2]);
+        m_studentInfo.setMidtermGrade(Integer.parseInt(studentInfoStr[3]));
+        m_studentInfo.setFinalGrade(Integer.parseInt(studentInfoStr[4]));
+    }
+
+    public StudentInfo getStudentInfo()
+    {
+        return m_studentInfo;
     }
 }

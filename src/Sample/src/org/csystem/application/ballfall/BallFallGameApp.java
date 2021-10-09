@@ -18,7 +18,7 @@ public class BallFallGameApp {
 			
 			ballFall.play(width, height);
 			
-			System.out.println(ballFall.shapeStr);			
+			System.out.println(ballFall.getShapeStr());
 		}
 	}
 }

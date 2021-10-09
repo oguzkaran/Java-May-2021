@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : NumberUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 19.09.2021
+	LAST UPDATE : 09.10.2021
 
 	Utility class for numeric operations
 
@@ -13,10 +13,10 @@ package org.csystem.util.number;
 import static java.lang.Math.*;
 
 public class NumberUtil {
-	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
-	public static int [] getDigits(long val, int n)
+	private static int [] getDigits(long val, int n)
 	{
 		val = Math.abs(val);
 		int [] result = new int[val == 0 ? 1 : (int)(Math.log10(val) / n) + 1];
@@ -27,7 +27,7 @@ public class NumberUtil {
 		return result;
 	}
 
-	public static String numberToText3DigitsTR(int val)
+	private static String numberToText3DigitsTR(int val)
 	{
 		if (val == 0)
 			return "sıfır";
@@ -42,17 +42,21 @@ public class NumberUtil {
 
 		if (a != 0) {
 			if (a != 1)
-				text += ones[a];
+				text += ms_ones[a];
 			text += "yüz";
 		}
 
 		if (b != 0)
-			text += tens[b];
+			text += ms_tens[b];
 
 		if (c != 0)
-			text += ones[c];
+			text += ms_ones[c];
 
 		return text;
+	}
+
+	private NumberUtil()
+	{
 	}
 
 	public static int calculateDigitalRoot(int val)

@@ -13,8 +13,8 @@ class LottoProbabiltySimulationApp {
 		
 		simulation.run();
 		
-		System.out.printf("1. oyunun kazanma olasılığı:%f%n", simulation.game1Prob);
-		System.out.printf("2. oyunun kazanma olasılığı:%f%n", simulation.game2Prob);
-		System.out.printf("3. oyunun kazanma olasılığı:%f%n", simulation.game3Prob);
+		System.out.printf("1. oyunun kazanma olasılığı:%f%n", simulation.getGame1Prob());
+		System.out.printf("2. oyunun kazanma olasılığı:%f%n", simulation.getGame2Prob());
+		System.out.printf("3. oyunun kazanma olasılığı:%f%n", simulation.getGame3Prob());
 	}
 }

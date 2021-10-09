@@ -1,7 +1,7 @@
 package org.csystem.application.ballfall;
 
 public class BallFall {
-	public static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
+	private static boolean updateRightFlag(boolean isRight, int ballIndex, int width)
 	{
 		if (ballIndex == 0)
 			isRight = true;		
@@ -11,7 +11,7 @@ public class BallFall {
 		return isRight;		
 	}
 	
-	public static int updateBallIndex(boolean isRight, int ballIndex)
+	private static int updateBallIndex(boolean isRight, int ballIndex)
 	{
 		if (isRight)
 			return ballIndex + 1;
@@ -19,41 +19,46 @@ public class BallFall {
 		return ballIndex - 1;			
 	}
 	
-	public String shapeStr;
+	private String m_shapeStr;
 	
 	public void fillSpace(int begin, int end) //[begin, end)
 	{
 		for (int i = begin; i < end; ++i)
-			shapeStr += ' ';
+			m_shapeStr += ' ';
 	}
 	
 	public void fillBall(int ballIndex, int end)
 	{
 		fillSpace(0, ballIndex);
-		shapeStr += '*';
+		m_shapeStr += '*';
 		fillSpace(ballIndex + 1, end);
 	}	
 	
 	
 	public BallFall()
 	{
-		shapeStr = "";
+		m_shapeStr = "";
 	}
 	
 	public void play(int width, int height)
 	{
 		int ballIndex = 0;
 		boolean isRight = false;
-		shapeStr = "";
+		m_shapeStr = "";
 		
 		for (int i = 1; i <= height; ++i) {
-			shapeStr += '|';
+			m_shapeStr += '|';
 			fillBall(ballIndex, width);
 			if (width != 1) {				
 				isRight = updateRightFlag(isRight, ballIndex, width);			
 				ballIndex = updateBallIndex(isRight, ballIndex);
 			}
-			shapeStr += "|\r\n";
+			m_shapeStr += "|\r\n";
 		}
+	}
+
+	public String getShapeStr()
+	{
+		return m_shapeStr;
 	}
 }

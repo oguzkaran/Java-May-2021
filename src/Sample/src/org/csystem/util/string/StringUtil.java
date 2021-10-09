@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 02.10.2021
+	LAST UPDATE : 09.10.2021
 
 	Utility class for string operations
 
@@ -15,9 +15,12 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class StringUtil {
-    public static String alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-    public static String alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
+    private static String ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+    private static String ms_alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
 
+    private StringUtil()
+    {
+    }
     public static String capitalize(String s)
     {
         return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -67,12 +70,12 @@ public class StringUtil {
 
     public static void fillRandomStringArrayTR(Random r, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, alphabetTR);
+        fillRandomStringArray(r, str, min, max, ms_alphabetTR);
     }
 
     public static void fillRandomStringArrayEN(Random r, String [] str, int min, int max)
     {
-        fillRandomStringArray(r, str, min, max, alphabetEN);
+        fillRandomStringArray(r, str, min, max, ms_alphabetEN);
     }
 
     public static String getLetters(String s)
@@ -123,7 +126,7 @@ public class StringUtil {
 
     public static String getRandomTextEN(Random r, int n)
     {
-        return getRandomText(r, n, alphabetTR);
+        return getRandomText(r, n, ms_alphabetTR);
     }
 
     public static String getRandomTextEN(int n)
@@ -133,7 +136,7 @@ public class StringUtil {
 
     public static String getRandomTextTR(Random r, int n)
     {
-        return getRandomText(r, n, alphabetEN);
+        return getRandomText(r, n, ms_alphabetEN);
     }
 
     public static String getRandomTextTR(int n)

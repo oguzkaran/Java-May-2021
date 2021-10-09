@@ -1,17 +1,68 @@
 package org.csystem.application.studentinfoparser;
 
 public class StudentInfo {
-    public String name;
-    public String birthDate;
-    public String lectureName;
-    public int midtermGrade;
-    public int finalGrade;
+    private String m_name;
+    private String m_birthDate;
+    private String m_lectureName;
+    private int m_midtermGrade;
+    private int m_finalGrade;
 
     //...
 
+
+    public String getName()
+    {
+        return m_name;
+    }
+
+    public void setName(String name)
+    {
+        m_name = name;
+    }
+
+    public String getBirthDate()
+    {
+        return m_birthDate;
+    }
+
+    public void setBirthDate(String birthDate)
+    {
+        m_birthDate = birthDate;
+    }
+
+    public String getLectureName()
+    {
+        return m_lectureName;
+    }
+
+    public void setLectureName(String lectureName)
+    {
+        m_lectureName = lectureName;
+    }
+
+    public int getMidtermGrade()
+    {
+        return m_midtermGrade;
+    }
+
+    public void setMidtermGrade(int midtermGrade)
+    {
+        m_midtermGrade = midtermGrade;
+    }
+
+    public int getFinalGrade()
+    {
+        return m_finalGrade;
+    }
+
+    public void setFinalGrade(int finalGrade)
+    {
+        m_finalGrade = finalGrade;
+    }
+
     public double getGrade()
     {
-        return midtermGrade * 0.4 + finalGrade * 0.6;
+        return m_midtermGrade * 0.4 + m_finalGrade * 0.6;
     }
 
 
@@ -21,6 +72,6 @@ public class StudentInfo {
 
         String fmt = "{name: %s, birthDate: %s, lectureName: %s, midterm: %d, final: %d, grade:%.1f, status: %s}";
 
-        return String.format(fmt, name, birthDate, lectureName, midtermGrade, finalGrade, grade, grade >= 50 ? "Geçti" : "Kaldı");
+        return String.format(fmt, m_name, m_birthDate, m_lectureName, m_midtermGrade, m_finalGrade, grade, grade >= 50 ? "Geçti" : "Kaldı");
     }
 }

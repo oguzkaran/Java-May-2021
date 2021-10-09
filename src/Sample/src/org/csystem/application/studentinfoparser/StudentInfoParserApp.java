@@ -29,7 +29,7 @@ public class StudentInfoParserApp {
                 break;
 
             StudentInfoParser parser = new StudentInfoParser(str);
-            StudentInfo studentInfo = parser.studentInfo;
+            StudentInfo studentInfo = parser.getStudentInfo();
 
             System.out.println(studentInfo.toString());
         }
