@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------
 	FILE        : Complex.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 05.09.2021
+	LAST UPDATE : 10.10.2021
 
-	Complex class that can be used for Complex numbers
+	Immutable Complex class that can be used for Complex numbers
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
@@ -25,32 +25,42 @@ public class Complex {
 		return add(real1, imag1, -real2, -imag2);				
 	}
 
-	public double real;
-	public double imag;
-
-	//...
+	private final double m_real;
+	private  final double m_imag;
 	
 	public Complex()
-	{		
+	{
+		m_real = m_imag = 0;
 	}	
 	
 	public Complex(Complex other)
 	{
-		real = other.real;
-		imag = other.imag;
+		m_real = other.m_real;
+		m_imag = other.m_imag;
 	}
 	
 	public Complex(double re)
 	{
-		real = re;
+		m_real = re;
+		m_imag = 0;
 	}
 	
 	public Complex(double re, double im)
 	{
-		real = re;
-		imag = im;
+		m_real = re;
+		m_imag = im;
 	}
-	
+
+	public double getReal()
+	{
+		return m_real;
+	}
+
+	public double getImag()
+	{
+		return m_imag;
+	}
+
 	public double getLength()
 	{
 		return getNorm();
@@ -58,70 +68,60 @@ public class Complex {
 	
 	public double getNorm()
 	{
-		return sqrt(real * real + imag * imag);
+		return sqrt(m_real * m_real + m_imag * m_imag);
 	}	
 	
 	public Complex getConjugate()
 	{
-		return new Complex(real, -imag);
+		return new Complex(m_real, -m_imag);
 	}
 	
 	//add	
 	public static Complex add(double val, Complex right)
 	{
-		return add(val, 0, right.real, right.imag);
+		return add(val, 0, right.m_real, right.m_imag);
 	}
 	
 	public Complex add(Complex right)
 	{
-		return add(real, imag, right.real, right.imag);
+		return add(m_real, m_imag, right.m_real, right.m_imag);
 	}	
 	
 	public Complex add(double val)
 	{
-		return add(real, imag, val, 0);
+		return add(m_real, m_imag, val, 0);
 	}
 	
 	//subtract
 	public static Complex subtract(double val, Complex right)
 	{
-		return subtract(val, 0, right.real, right.imag);
+		return subtract(val, 0, right.m_real, right.m_imag);
 	}
 	
 	public Complex subtract(Complex right)
 	{
-		return subtract(real, imag, right.real, right.imag);
+		return subtract(m_real, m_imag, right.m_real, right.m_imag);
 	}	
 	
 	public Complex subtract(double val)
 	{
-		return subtract(real, imag, val, 0);
+		return subtract(m_real, m_imag, val, 0);
 	}
 	
 	//inc
-	public void inc(int val)
+	public Complex inc()
 	{
-		real += val;		
-	}
-	
-	public void inc()
-	{
-		inc(1);		
+		return add(1);
 	}
 	
 	//dec
-	public void dec(int val)
+	public Complex dec()
 	{
-		inc(-val);		
-	}
-	
-	public void dec()
-	{
-		dec(1);
+		return inc();
 	}
 
 	public String toString()
 	{				
-		return String.format("|%.1f%si| = %f", real, (imag < 0 ? " - " : " + ") +  abs(imag), getNorm());		
+		return String.format("|%.1f%si| = %f", m_real, (m_imag < 0 ? " - " : " + ") +  abs(m_imag), getNorm());
 	}
 }

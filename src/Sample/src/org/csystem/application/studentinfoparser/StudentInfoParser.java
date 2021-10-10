@@ -3,7 +3,7 @@ package org.csystem.application.studentinfoparser;
 import org.csystem.application.date.DateUtil;
 
 public class StudentInfoParser {
-    private StudentInfo m_studentInfo;
+    private final StudentInfo m_studentInfo;
 
     public static String getBirthDate(String str)
     {

@@ -3,8 +3,8 @@ package org.csystem.application.calculatesumcountminmaxaverage;
 import java.util.Scanner;
 
 public class SumCountMaxMinAverageOperation {
-	private Scanner m_kb;
-	private SumCountMaxMinAverage m_sumCountMaxMinAverage;
+	private final Scanner m_kb;
+	private final SumCountMaxMinAverage m_sumCountMaxMinAverage;
 
 	private int getValue()
 	{

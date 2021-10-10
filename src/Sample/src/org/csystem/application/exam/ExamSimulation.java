@@ -66,7 +66,7 @@ public class ExamSimulation {
         System.out.println("-------------------------------------------------------");
     }
 
-    public void diplayAverages()
+    public void displayAverages()
     {
         System.out.printf("%s dersi için not ortalamaları:%n", m_lectureName);
         System.out.println("-------------------------------------------------------");
@@ -81,7 +81,7 @@ public class ExamSimulation {
     {
         System.out.println("//////////////////////////////////////////////////////////");
         displayGrades();
-        diplayAverages();
+        displayAverages();
         System.out.println("//////////////////////////////////////////////////////////");
     }
 
