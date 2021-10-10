@@ -18,6 +18,10 @@ package org.csystem.application.findtextincurly;
 import java.util.Scanner;
 
 class FindTextIntCurlyApp {
+	private FindTextIntCurlyApp()
+	{
+	}
+
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);

@@ -21,7 +21,7 @@ public class BallFall {
 	
 	private String m_shapeStr;
 	
-	public void fillSpace(int begin, int end) //[begin, end)
+	private void fillSpace(int begin, int end) //[begin, end)
 	{
 		for (int i = begin; i < end; ++i)
 			m_shapeStr += ' ';

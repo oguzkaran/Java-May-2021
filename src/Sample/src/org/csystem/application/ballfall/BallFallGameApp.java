@@ -1,6 +1,10 @@
 package org.csystem.application.ballfall;
 
 public class BallFallGameApp {
+	private BallFallGameApp()
+	{
+	}
+
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);

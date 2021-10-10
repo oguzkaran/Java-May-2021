@@ -17,6 +17,10 @@ package org.csystem.application.studentinfoparser;
 import java.util.Scanner;
 
 public class StudentInfoParserApp {
+    private StudentInfoParserApp()
+    {
+    }
+
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
