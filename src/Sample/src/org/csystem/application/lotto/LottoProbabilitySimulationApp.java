@@ -1,7 +1,7 @@
 package org.csystem.application.lotto;
 
-class LottoProbabiltySimulationApp {
-	private LottoProbabiltySimulationApp()
+class LottoProbabilitySimulationApp {
+	private LottoProbabilitySimulationApp()
 	{
 	}
 
@@ -12,7 +12,7 @@ class LottoProbabiltySimulationApp {
 		System.out.print("Bir sayı giriniz:");
 		int n = Integer.parseInt(kb.nextLine());
 		
-		LottoProbabiltySimulation simulation = new LottoProbabiltySimulation(n);
+		LottoProbabilitySimulation simulation = new LottoProbabilitySimulation(n);
 		
 		simulation.run();
 		

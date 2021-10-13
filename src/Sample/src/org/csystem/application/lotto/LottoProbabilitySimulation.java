@@ -1,12 +1,12 @@
 package org.csystem.application.lotto;
 
-public class LottoProbabiltySimulation {
+public class LottoProbabilitySimulation {
 	private int m_count;
 	private double m_game1Prob;
 	private double m_game2Prob;
 	private double m_game3Prob;
 	
-	public LottoProbabiltySimulation(int n)
+	public LottoProbabilitySimulation(int n)
 	{
 		m_count = n;
 	}
