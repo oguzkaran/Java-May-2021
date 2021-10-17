@@ -9,7 +9,7 @@
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
 -----------------------------------------------------------------------*/
-package org.csystem.util;
+package org.csystem.util.wrapper;
 
 public class IntValue {
     private static final int CACHE_MIN = -128;

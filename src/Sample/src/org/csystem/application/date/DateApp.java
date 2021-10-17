@@ -13,7 +13,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.application.date;
 
-public class DateUtilTest {
+public class DateApp {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);

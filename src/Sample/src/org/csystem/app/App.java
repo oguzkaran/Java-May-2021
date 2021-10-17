@@ -1,19 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	IntValue sınıfı
+	Date sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.IntValue;
+import org.csystem.util.datetime.Date;
 
 class App {
 	public static void main(String [] args)
 	{
-		IntValue iVal1 = IntValue.TEN;
-		IntValue iVal2 = IntValue.of(3);
-		IntValue [] result;
+		Date d = new Date(19, 10, 2021);
 
-		result = iVal1.divideWithRemainder(iVal2);
-		System.out.printf("Result:%s%n", result[0].toString());
-		System.out.printf("Remainder:%s%n", result[1].toString());
+		System.out.println(d.toLongDateStringTR());
+		System.out.println(d.toLongDateStringEN());
+
+		d.setDay(23);
+		System.out.println(d.toLongDateStringTR());
+		System.out.println(d.toLongDateStringEN());
 	}
 }
