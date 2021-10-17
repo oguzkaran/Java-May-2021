@@ -26,7 +26,7 @@ public class Complex {
 	}
 
 	private final double m_real;
-	private  final double m_imag;
+	private final double m_imag;
 	
 	public Complex()
 	{
