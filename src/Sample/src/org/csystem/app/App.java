@@ -1,25 +1,57 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Klavyeden aşağıdak formatta girilen bilgiyi ayrıştırarak ekrana sonuçları yazdıran programı yazınız:
-	<isim>:<gg/aa/yyyy>:<ders adı>:<vize>:<final>
-	Oğuz Karan:10/09/1976:Matematik:54:78
-	Büşra Uludağ Polat:09/08/1994:Programlamaya Giriş:89:100
-	Furkan Genç:02/11/2006:Tarih:78:98
-	Oğuz Karan:10/09/1976:Kimya:55:20
-	Açıklamalar:
-	- Format geçerlilik kontrolü yapılmayacaktır
-	- Formatta kişinin vize ve final notlarına göre vize * 0.4 + final * 0.6 formülüne göre geçme notu hesaplanacak
-	ve doğum tarihinin hangi güne geldiği de belirlenerek ekrana geçti-kaldı bilgisiyle beraber yazılacaktır
-	- Geçme notu >= 50 ise öğrenci geçecek, değilse kalacaktır
-	- İleride daha iyisi yazılacaktır
+	Yukarıdaki probleme ilişkin sınıflar Java 5 ile eklenen ve detayları ileride açıklanan "enum sınıflar (enum classes)"
+	kullanılarak daha yalın hale getirilebilir. Üstelik enum class'lar yukarıdaki sınıflardan daha fazla yetenek de
+	kazandırır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.application.studentinfoparser.StudentInfoParserApp;
 
 class App {
 	public static void main(String [] args)
 	{
-		StudentInfoParserApp.run();
+		AlienGame alienGame = new AlienGame();
+
+		alienGame.run();
 	}
+}
+
+class AlienGame {
+	//...
+	public void run()
+	{
+		GameObject gameObject = new GameObject(/*...*/);
+
+		//...
+
+		gameObject.setColor(Color.RED);
+		gameObject.setColor(Color.GREEN);
+		gameObject.setColor(Color.BLUE);
+		gameObject.setColor(Color.WHITE);
+		gameObject.setColor(Color.BLACK);
+	}
+}
+
+enum Direction {
+	RIGHT, TOP, LEFT, BOTTOM
+}
+
+enum Color {
+	RED, GREEN, BLUE, WHITE, BLACK
+}
+
+class GameObject {
+	private Color m_color;
+	//...
+	public void setColor(Color color)
+	{
+		//...
+		m_color = color;
+	}
+
+	public void move(Direction direction)
+	{
+		//...
+	}
+
+	//...
 }
 
