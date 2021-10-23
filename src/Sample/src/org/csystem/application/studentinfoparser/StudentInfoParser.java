@@ -1,18 +1,18 @@
 package org.csystem.application.studentinfoparser;
 
-import org.csystem.application.date.DateUtil;
+import org.csystem.util.datetime.Date;
 
 public class StudentInfoParser {
     private final StudentInfo m_studentInfo;
 
-    public static String getBirthDate(String str)
+    private static Date getBirthDate(String str)
     {
         String [] birthDateInfo = str.split("[/]");
         int day = Integer.parseInt(birthDateInfo[0]);
         int month = Integer.parseInt(birthDateInfo[1]);
         int year = Integer.parseInt(birthDateInfo[2]);
 
-        return DateUtil.getDateTR(day, month, year);
+        return new Date(day, month, year);
     }
 
 

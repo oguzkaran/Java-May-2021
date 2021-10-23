@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Date.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 17.10.2021
+	LAST UPDATE : 23.10.2021
 
 	Date class for date operations
 
@@ -10,8 +10,12 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.datetime;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
 public class Date {
-    private static final int [] daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private static final int [] ms_daysOfMonths = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     private static final String [] ms_monthsTR = {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
             "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
@@ -20,7 +24,7 @@ public class Date {
 
     private static final String [] ms_monthsEN = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    private static final String [] ms_daysOfWeekEN = {"Sun", "mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+    private static final String [] ms_daysOfWeekEN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
     private static boolean isLeapYear(int year)
     {
@@ -32,7 +36,7 @@ public class Date {
         if (day < 1 || day > 31 || month < 1 || month > 12)
             return false;
 
-        return day <= (month == 2 && isLeapYear(year) ? 29 : daysOfMonths[month]);
+        return day <= (month == 2 && isLeapYear(year) ? 29 : ms_daysOfMonths[month]);
     }
 
     private static int getTotalDaysByMonth(int month, int year)
@@ -40,7 +44,7 @@ public class Date {
         int totalDays = 0;
 
         for (int m = month - 1; m >= 1; --m)
-            totalDays += daysOfMonths[m];
+            totalDays += ms_daysOfMonths[m];
 
         return month > 2 && isLeapYear(year) ? totalDays + 1 : totalDays;
     }
@@ -125,6 +129,47 @@ public class Date {
     private int m_year;
     private int m_dayOfWeek;
 
+    public static Date random()
+    {
+        return random(new Random());
+    }
+
+    public static Date random(Random r)
+    {
+        return random(r, new Date().m_year);
+    }
+
+    public static Date random(int year)
+    {
+        return random(new Random(), year);
+    }
+
+    public static Date random(Random r, int year)
+    {
+        return random(r, year, year);
+    }
+
+    public static Date random(int minYear, int maxYear)
+    {
+        return random(new Random(), minYear, maxYear);
+    }
+
+    public static Date random(Random r, int minYear, int maxYear)
+    {
+        int year = r.nextInt(maxYear - minYear + 1) + minYear;
+        int month = r.nextInt(12) + 1;
+        int day = r.nextInt(month == 2 && isLeapYear(year) ? 29 : ms_daysOfMonths[month]) + 1;
+
+        return new Date(day, month, year);
+    }
+
+    public Date() //Burada yazılanların şu an için bilinmesi gerekmez. Sadece default ctor'un anlamına odaklanınız
+    {
+        Calendar today = new GregorianCalendar();
+
+        set(today.get(Calendar.DAY_OF_MONTH), today.get(Calendar.MONTH) + 1, today.get(Calendar.YEAR));
+    }
+
     public Date(int day, int month, int year)
     {
         checkForDate(day, month, year, String.format("Invalid date value or values -> day: %d, month: %d, year: %d",
@@ -189,13 +234,48 @@ public class Date {
         return ms_daysOfWeekEN[m_dayOfWeek];
     }
 
+    public boolean isLeapYear()
+    {
+        return isLeapYear(m_year);
+    }
+
+    public boolean isWeekend()
+    {
+        return m_dayOfWeek == 0 || m_dayOfWeek == 6;
+    }
+
+    public boolean isWeekday()
+    {
+        return !isWeekend();
+    }
+
+    public String toString()
+    {
+        return toString('/');
+    }
+
+    public String toString(char delimiter)
+    {
+        return String.format("%02d%c%02d%c%04d", m_day, delimiter, m_month, delimiter, m_year);
+    }
+
     public String toLongDateStringTR()
     {
-        return String.format("%d %s %d %s", m_day, ms_monthsTR[m_month], m_year, getDayOfWeekTR());
+        return String.format("%s %s", toShortDateStringTR(), getDayOfWeekTR());
     }
 
     public String toLongDateStringEN()
     {
-        return String.format("%d%s %s %d %s", m_day, getDaySuffix(m_day), ms_monthsEN[m_month], m_year, getDayOfWeekEN());
+        return String.format("%s %s", toShortDateStringEN(), getDayOfWeekEN());
+    }
+
+    public String toShortDateStringTR()
+    {
+        return String.format("%d %s %d", m_day, ms_monthsTR[m_month], m_year);
+    }
+
+    public String toShortDateStringEN()
+    {
+        return String.format("%d%s %s %d", m_day, getDaySuffix(m_day), ms_monthsEN[m_month], m_year);
     }
 }

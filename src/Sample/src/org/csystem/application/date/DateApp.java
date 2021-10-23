@@ -9,11 +9,29 @@
 		- 1.1.1900 öncesindeki tarihler geçersizler kabul edilir
 		- Parametresi ile aldığı gün, ay ve yıl bilgilerine ilişkin tarihin hafta sonu olup olmadığını test eden isWeekend
 		ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız. Metotlar tarih geçerliliği kontrolü yapmayacaktır
-	(İleride daha iyisi yazılacaktır)
+		(İleride daha iyisi yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.application.date;
 
+import org.csystem.util.datetime.Date;
+
 public class DateApp {
+	private DateApp()
+	{
+	}
+
+	private static void displayDateTR(Date d)
+	{
+		System.out.println(d.toLongDateStringTR());
+		System.out.println(d.isWeekend() ? "Bugün kurs var tekrar yaptınız mı?" : "Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız");
+	}
+
+	private static void displayDateEN(Date d)
+	{
+		System.out.println(d.toLongDateStringEN());
+		System.out.println(d.isWeekend() ? "That is the course day. Did you review?" :
+				"Course day is coming. Do not forget to review");
+	}
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -30,9 +48,11 @@ public class DateApp {
 			
 			System.out.print("Yıl?");
 			int year = Integer.parseInt(kb.nextLine());
-			
-			DateUtil.displayDateTR(day, month, year);
-			DateUtil.displayDateEN(day, month, year);
+
+			Date date = new Date(day, month, year); //Geçersiz tarih durumu ileride ele alınacaktır
+
+			displayDateTR(date);
+			displayDateEN(date);
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");

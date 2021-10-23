@@ -11,6 +11,7 @@
 package org.csystem.util.datetime;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class Time {
@@ -97,9 +98,9 @@ public class Time {
         return new Time(r.nextInt(24), r.nextInt(60), r.nextInt(60), r.nextInt(1000));
     }
 
-    public Time() //Burada yazılanların şu an için bilinmesi gerekmz. Sadece default ctor'un anlamına odaklanınız
+    public Time() //Burada yazılanların şu an için bilinmesi gerekmez. Sadece default ctor'un anlamına odaklanınız
     {
-        Calendar now = Calendar.getInstance();
+        Calendar now = new GregorianCalendar();
 
         m_hour = now.get(Calendar.HOUR_OF_DAY);
         m_minute = now.get(Calendar.MINUTE);
