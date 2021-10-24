@@ -1,57 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Yukarıdaki probleme ilişkin sınıflar Java 5 ile eklenen ve detayları ileride açıklanan "enum sınıflar (enum classes)"
-	kullanılarak daha yalın hale getirilebilir. Üstelik enum class'lar yukarıdaki sınıflardan daha fazla yetenek de
-	kazandırır
+	Aşağıdaki örnek için enum kullanılamaz. Çünkü başka renklerin de programcı tarafından üretilmesi gerekir. Bu durumda
+	nesne yaratılması gerekir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
 	public static void main(String [] args)
 	{
-		AlienGame alienGame = new AlienGame();
+		Singleton s1 = Singleton.INSTANCE;
+		Singleton s2 = Singleton.INSTANCE;
 
-		alienGame.run();
+		System.out.println(s1 == s2);
 	}
 }
 
-class AlienGame {
-	//...
-	public void run()
+enum Singleton {
+	INSTANCE;
+	private int m_a;
+
+	public int getA()
 	{
-		GameObject gameObject = new GameObject(/*...*/);
-
-		//...
-
-		gameObject.setColor(Color.RED);
-		gameObject.setColor(Color.GREEN);
-		gameObject.setColor(Color.BLUE);
-		gameObject.setColor(Color.WHITE);
-		gameObject.setColor(Color.BLACK);
+		return m_a;
 	}
-}
 
-enum Direction {
-	RIGHT, TOP, LEFT, BOTTOM
-}
-
-enum Color {
-	RED, GREEN, BLUE, WHITE, BLACK
-}
-
-class GameObject {
-	private Color m_color;
-	//...
-	public void setColor(Color color)
+	public void setA(int a)
 	{
 		//...
-		m_color = color;
+		m_a = a;
 	}
-
-	public void move(Direction direction)
-	{
-		//...
-	}
-
 	//...
 }
+
 
