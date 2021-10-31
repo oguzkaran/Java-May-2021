@@ -1,17 +1,23 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Date sınıfı
+	AnalyticalCircle sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.util.datetime.Date;
-import org.csystem.util.datetime.Month;
+import org.csystem.util.math.geometry.AnalyticalCircle;
+import org.csystem.util.math.geometry.Point;
 
 class App {
 	public static void main(String [] args)
 	{
-		Date date = new Date(6, Month.SEP, 2021);
+		Point p = new Point(100, 100);
+		AnalyticalCircle ac = new AnalyticalCircle(3.5, p);
 
-		System.out.println(date.toLongDateStringTR());
+		System.out.println("-------------------------");
+		System.out.printf("Radius:%f%n", ac.getRadius());
+		System.out.printf("Circumference:%f%n", ac.getCircumference());
+		System.out.printf("Area:%f%n", ac.getArea());
+		System.out.printf("{x: %d, y: %d}%n", ac.getX(), ac.getY());
+		System.out.println("-------------------------");
 	}
 }
 
