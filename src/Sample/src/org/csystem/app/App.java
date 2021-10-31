@@ -1,118 +1,55 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Taxi, Driver ve Client sınıfları ve aralarındaki ilişkiler
+	Aşağıdaki örnekte ** ve *** ile belirtilen deyim yazılsa da yazılmasa da aynı anlamdadır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
 	public static void main(String [] args)
 	{
-		Taxi taxi = new Taxi(DriverUtil.getDriver()/*...*/);
-		Client client = ClientUtil.getClient();
+		C x = new C();
+		System.out.println("----------------");
+		C y = new C(10);
 
-		taxi.takeClient(client);
-		//...
 	}
 }
-
-class DriverUtil {
-	public static Driver getDriver()
+class C extends B {
+	public C()
 	{
-		Driver driver = new Driver();
-
-		driver.setName("Oğuz Karan");
-		driver.setDriverLicenceNo(12345678);
-
-		return driver;
+		super(); //**
+		System.out.println("C.C()");
 	}
-}
 
-class ClientUtil {
-	public static Client getClient()
+	public C(int x)
 	{
-		Client client = new Client();
-
-		client.setName("Çağıl Cebeci");
-		client.setUsername("ccebeci");
-
-		return client;
+		super(x);
+		System.out.println("C.C(int)");
 	}
 }
+class B extends A {
+	public B()
+	{
+		super(); //***
+		System.out.println("B.B()");
+	}
 
-class Taxi {
-	private Driver m_driver;
+	public B(int x)
+	{
+		super(x);
+		System.out.println("B.B(int)");
+	}
 	//...
-	public Taxi(Driver driver)
-	{
-		m_driver = driver;
-	}
-
-	public Driver getDriver()
-	{
-		return m_driver;
-	}
-
-	public void setDriver(Driver driver)
-	{
-		//...
-		m_driver = driver;
-	}
-
-	//...
-	public void takeClient(Client client)
-	{
-		System.out.printf("Client Info:%s, %s%n",  client.getName(), client.getUsername());
-		System.out.printf("Driver Info:%s, %d%n", m_driver.getName(), m_driver.getDriverLicenceNo());
-	}
 }
 
-class Client {
-	private String m_username;
-	private String m_name;
+class A {
+	public A()
+	{
+		System.out.println("A.A()");
+	}
 
+	public A(int a)
+	{
+		System.out.println("A.A(int)");
+	}
 	//...
-	public String getUsername()
-	{
-		return m_username;
-	}
-
-	public void setUsername(String username)
-	{
-		m_username = username;
-	}
-
-	public String getName()
-	{
-		return m_name;
-	}
-
-	public void setName(String name)
-	{
-		m_name = name;
-	}
 }
 
-class Driver {
-	private String m_name;
-	private long m_driverLicenceNo;
-	//...
-
-	public String getName()
-	{
-		return m_name;
-	}
-
-	public void setName(String name)
-	{
-		m_name = name;
-	}
-
-	public long getDriverLicenceNo()
-	{
-		return m_driverLicenceNo;
-	}
-
-	public void setDriverLicenceNo(long driverLicenceNo)
-	{
-		m_driverLicenceNo = driverLicenceNo;
-	}
-}
