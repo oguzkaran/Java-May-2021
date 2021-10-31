@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Point.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 05.09.2021
+	LAST UPDATE : 31.10.2021
 
 	Point class that represents the 2(two) dimensional point
 
@@ -22,7 +22,7 @@ public class Point {
 	
 	public Point(int a)
 	{
-		x = a;
+		this(a, 0);
 	}
 	
 	public Point(int a, int b)

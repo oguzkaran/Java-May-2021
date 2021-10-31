@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Complex.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 10.10.2021
+	LAST UPDATE : 31.10.2021
 
 	Immutable Complex class that can be used for Complex numbers
 
@@ -30,19 +30,17 @@ public class Complex {
 	
 	public Complex()
 	{
-		m_real = m_imag = 0;
+		this(0);
 	}	
 	
 	public Complex(Complex other)
 	{
-		m_real = other.m_real;
-		m_imag = other.m_imag;
+		this(other.m_real, other.m_imag);
 	}
 	
 	public Complex(double re)
 	{
-		m_real = re;
-		m_imag = 0;
+		this(re, 0);
 	}
 	
 	public Complex(double re, double im)

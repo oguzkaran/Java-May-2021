@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Time.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 17.10.2021
+	LAST UPDATE : 31.10.2021
 
 	Time class for time operations
 
@@ -109,6 +109,16 @@ public class Time {
     }
 
     //...
+
+    public Time(int hour, int minute)
+    {
+        this(hour, minute, 0);
+    }
+
+    public Time(int hour, int minute, int second)
+    {
+        this(hour, minute, second, 0);
+    }
 
     public Time(int hour, int minute, int second, int millisecond)
     {

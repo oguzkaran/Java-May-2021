@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Date.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 24.10.2021
+	LAST UPDATE : 31.10.2021
 
 	Date class for date operations
 
@@ -172,11 +172,7 @@ public class Date {
 
     public Date(int day, Month month, int year)
     {
-        int ordinal = month.ordinal();
-
-        checkForDate(day, ordinal + 1, year, String.format("Invalid date value or values -> day: %d, month: %d, year: %d",
-                day, ordinal + 1, year));
-        set(day, ordinal + 1, year);
+        this(day, month.ordinal() + 1, year);
     }
 
     public Date(int day, int month, int year)
