@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------
-	FILE        : Circle.java
+	FILE        : AnalyticalCircle.java
 	AUTHOR      : Java-May-2021 Group
 	LAST UPDATE : 06.11.2021
 
@@ -18,7 +18,7 @@ public class AnalyticalCircle extends Circle {
         this(0);
     }
 
-    public AnalyticalCircle(int x, int y)
+    public AnalyticalCircle(double x, double y)
     {
         this(0, x, y);
     }
@@ -38,28 +38,28 @@ public class AnalyticalCircle extends Circle {
         this(r, center.x, center.y);
     }
 
-    public AnalyticalCircle(double r, int x, int y)
+    public AnalyticalCircle(double r, double x, double y)
     {
         super(r);
-        m_center =  new Point(x, y);
+        m_center =  Point.createCartesian(x, y);
     }
 
-    public int getX()
+    public double getX()
     {
         return m_center.x;
     }
 
-    public void setX(int x)
+    public void setX(double x)
     {
         m_center.x = x;
     }
 
-    public int getY()
+    public double getY()
     {
         return m_center.y;
     }
 
-    public void setY(int y)
+    public void setY(double y)
     {
         m_center.y = y;
     }
@@ -74,18 +74,18 @@ public class AnalyticalCircle extends Circle {
         setCenter(center.x, center.y);
     }
 
-    public void setCenter(int x, int y)
+    public void setCenter(double x, double y)
     {
         setX(x);
         setY(y);
     }
 
-    public void offset(int dx, int dy) //delegate method
+    public void offset(double dx, double dy) //delegate method
     {
         m_center.offset(dx, dy);
     }
 
-    public void offset(int dxy) //delegate method
+    public void offset(double dxy) //delegate method
     {
         offset(dxy, dxy);
     }

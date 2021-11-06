@@ -12,9 +12,17 @@ package org.csystem.util.math.geometry;
 
 import static java.lang.Math.sqrt;
 
+enum CoordinateType {CARTESIAN, POLAR}
+
 public class Point {
-	public int x;
-	public int y;
+	public double x;
+	public double y;
+
+	private Point(double a, double b, CoordinateType coordinateType)
+	{
+		x = coordinateType == CoordinateType.CARTESIAN ? a : a * Math.cos(b);
+		y = coordinateType == CoordinateType.CARTESIAN ? b : a * Math.sin(b);
+	}
 
 	Point(Point p)
 	{
@@ -22,51 +30,46 @@ public class Point {
 		y = p.y;
 	}
 
-	public Point()
-	{		
-	}
-	
-	public Point(int a)
+	public static Point createCartesian(double a, double b)
 	{
-		this(a, 0);
+		return new Point(a, b, CoordinateType.CARTESIAN);
 	}
-	
-	public Point(int a, int b)
+
+	public static Point createPolar(double r, double theta)
 	{
-		x = a;
-		y = b;
+		return new Point(r, theta, CoordinateType.POLAR);
 	}
-	
+
 	public double distance()
 	{
 		return distance(0, 0);
 	}
-	
+
 	public double distance(Point other)
 	{
 		return distance(other.x, other.y);
 	}
-	
-	public double distance(int a, int b)
+
+	public double distance(double a, double b)
 	{
 		return sqrt((x - a) * (x - a) + (y - b) * (y - b));
 	}
-	
-	public void offset(int dxy)
-	{		
-		offset(dxy, dxy);	
+
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
 	}
-	
-	public void offset(int dx, int dy)
+
+	public void offset(double dx, double dy)
 	{
 		x += dx;
 		y += dy;
 	}
-	
+
 	public String toString()
 	{
-		return String.format("{x: %d, y: %d}", x, y);
-	}	
-	
+		return String.format("{x: %f, y: %f}", x, y);
+	}
+
 	//...
 }
