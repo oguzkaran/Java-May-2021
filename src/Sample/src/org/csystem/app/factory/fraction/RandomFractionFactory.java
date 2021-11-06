@@ -7,6 +7,11 @@ import java.util.Random;
 public class RandomFractionFactory {
 	private final Random m_random;
 
+	public RandomFractionFactory()
+	{
+		this(new Random());
+	}
+
 	public RandomFractionFactory(Random random)
 	{
 		m_random = random;

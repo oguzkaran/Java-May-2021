@@ -38,7 +38,7 @@ public class NumericLottery {
 
     public NumericLottery()
     {
-        m_random = new Random();
+        this(new Random());
     }
 
     public NumericLottery(Random r)

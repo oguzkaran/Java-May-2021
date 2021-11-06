@@ -59,12 +59,16 @@ public class Lotto {
 		
 		m_winGame3 = max - min > mid;
 	}
-	
+
+	public Lotto()
+	{
+		this(new Random());
+	}
 	
 	public Lotto(Random r)
 	{
 		m_random = r;
-	}	
+	}
 	
 	public void play()
 	{

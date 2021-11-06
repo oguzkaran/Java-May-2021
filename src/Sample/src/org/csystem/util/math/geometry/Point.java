@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Point.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 31.10.2021
+	LAST UPDATE : 06.11.2021
 
 	Point class that represents the 2(two) dimensional point
 
@@ -15,7 +15,13 @@ import static java.lang.Math.sqrt;
 public class Point {
 	public int x;
 	public int y;
-	
+
+	Point(Point p)
+	{
+		x = p.x;
+		y = p.y;
+	}
+
 	public Point()
 	{		
 	}

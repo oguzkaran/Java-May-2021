@@ -108,8 +108,6 @@ public class Time {
         m_millisecond = now.get(Calendar.MILLISECOND);
     }
 
-    //...
-
     public Time(int hour, int minute)
     {
         this(hour, minute, 0);

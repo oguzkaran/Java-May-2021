@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Circle.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 31.10.2021
+	LAST UPDATE : 06.11.2021
 
 	AnalyticalCircle class that represents the analytical circle in geometry
 
@@ -64,5 +64,34 @@ public class AnalyticalCircle extends Circle {
         m_center.y = y;
     }
 
+    public Point getCenter()
+    {
+        return new Point(m_center);
+    }
 
+    public void setCenter(Point center)
+    {
+        setCenter(center.x, center.y);
+    }
+
+    public void setCenter(int x, int y)
+    {
+        setX(x);
+        setY(y);
+    }
+
+    public void offset(int dx, int dy) //delegate method
+    {
+        m_center.offset(dx, dy);
+    }
+
+    public void offset(int dxy) //delegate method
+    {
+        offset(dxy, dxy);
+    }
+
+    public double centerDistance(AnalyticalCircle other)
+    {
+        return m_center.distance(other.m_center);
+    }
 }

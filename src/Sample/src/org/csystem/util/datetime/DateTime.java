@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : DateTime.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 30.10.2021
+	LAST UPDATE : 06.11.2021
 
 	DateTime class for date and time operations
 
@@ -10,9 +10,41 @@
 -----------------------------------------------------------------------*/
 package org.csystem.util.datetime;
 
+import java.util.Random;
+
 public class DateTime {
     private final Date m_date;
     private final Time m_time;
+
+    public static DateTime random()
+    {
+        return random(new Random(), new Date().getYear());
+    }
+
+    public static DateTime random(Random r)
+    {
+        return random(r, new Date().getYear());
+    }
+
+    public static DateTime random(int year)
+    {
+        return random(new Random(), year, year);
+    }
+
+    public static DateTime random(Random r, int year)
+    {
+        return random(r, year, year);
+    }
+
+    public static DateTime random(int minYear, int maxYear)
+    {
+        return random(new Random(), minYear, maxYear);
+    }
+
+    public static DateTime random(Random r, int minYear, int maxYear)
+    {
+        return new DateTime(Date.random(r, minYear, maxYear), Time.random(r));
+    }
 
     public DateTime()
     {
@@ -20,9 +52,28 @@ public class DateTime {
         m_time = new Time();
     }
 
-    //...
+    public DateTime(Date date, Time time)
+    {
+        this(date.getDay(), date.getMonth(), date.getYear(), time.getHour(), time.getMinute(), time.getSecond(), time.getMillisecond());
+    }
 
-    public DateTime(int day, int month, int year, int hour, int minute, int second, int millisecond)
+    public DateTime(int day, Month month, int year)
+    {
+        this(day, month, year, 0, 0);
+    }
+
+
+    public DateTime(int day, Month month, int year, int hour, int minute)
+    {
+        this(day, month, year, hour, minute, 0);
+    }
+
+    public DateTime(int day, Month month, int year, int hour, int minute, int second)
+    {
+        this(day, month, year, hour, minute, second, 0);
+    }
+
+    public DateTime(int day, Month month, int year, int hour, int minute, int second, int millisecond)
     {
         m_date = new Date(day, month, year);
         m_time = new Time(hour, minute, second, millisecond);
