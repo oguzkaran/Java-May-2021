@@ -1,0 +1,33 @@
+/*----------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------*/
+package org.csystem.app;
+
+class App {
+	public static void main(String [] args)
+	{
+		C x = new C();
+		B y;
+		A z;
+
+		y = x;
+
+		System.out.println(y.getClass().getName());
+
+        z = y;
+
+        System.out.println(z.getClass().getName());
+    }
+}
+
+class C extends B {
+	//...
+}
+
+class B extends A {
+	//...
+}
+
+class A {
+	//...
+}
