@@ -1,51 +1,79 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Taban sınıf türünden bir referans türemiş sınıf türünden bir referansa doğrudan atanamaz. Bu işlem tür dönüştürme
-	operatörü ile (explicit) yapılabilir (downcasting). Burada tür dönüştürme operatörü derlemeden geçmek için
-	kullanılır. Çalışma zamanında kaynak referansın dinamik türünün tür dönüştürme operatörüne yazılan türü kapsayıp
-	kapsamadığına bakılır. Kapsıyorsa haklı dönüşümdür, akış devam eder, kapsamıyorsa haksız dönüşümdür exception
-	oluşur. Buradaki kapsama nesnesel kapsamadır
+
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
+import java.util.Random;
 import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
 		Scanner kb = new Scanner(System.in);
-		System.out.print("Bir sayı giriniz:");
-		int val = Integer.parseInt(kb.nextLine());
+		SampleAFactory factory = new SampleAFactory();
 		A x;
-		B y;
 
-		x = val > 0 ? new B() : new A();
+		System.out.print("Bir sayı giriniz:");
+		int n = Integer.parseInt(kb.nextLine());
 
-		System.out.println(x.getClass().getName());
+		while (n-- > 0) {
+			System.out.println("--------------------------------------------");
+			x = factory.getRandomA();
+			System.out.println(x.getClass().getName());
 
-		y = (B)x; //downcasting
+			if (x instanceof B) {
+				B b = (B)x;
 
-		y.a = 10;
-		Sample.foo(y);
-		System.out.println("---------------------------");
-		System.out.println(x.getClass().getName());
+				b.foo();
+			}
+			else
+				System.out.println("B veya B'den türemiş bir tür değil");
+
+			System.out.println("--------------------------------------------");
+		}
 	}
 }
 
-class Sample {
-	public static void foo(B x)
+class SampleAFactory {
+	private final Random m_random = new Random();
+
+	public A getRandomA()
 	{
-		x.a = 20;
-		x.b = 30;
+		int val = m_random.nextInt(3);
+		A x;
+
+		switch (val) {
+			case 0:
+				x = new B();
+				break;
+			case 1:
+				x = new C();
+				break;
+			default:
+				x = new D();
+		}
+
+		return x;
 	}
 }
 
-class B extends A {
-	public int b;
+class D extends A {
 	//...
 }
 
-class A {
-	public int a;
+class C extends B {
+	//...
+}
 
+class B extends A {
+	public void foo()
+	{
+		System.out.println("B.foo");
+	}
+
+	//..
+}
+
+class A {
 	//...
 }
