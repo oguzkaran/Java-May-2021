@@ -1,79 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------
-
+	Integer sınıfının (aslında tüm tamsayı türlerine ilişkin sarmalayan sınıfların) ilişkin olduğu temel tür paraemtreli
+	valueOf metotları [-128, 127] aralığındaki değerleri bir ön bellekte (cache) tutar. Böyleikle daha efektif bir çalışma
+	saplanır. Bu aralık dışındaki değerlerin ön bellekte tutulacağı garanti değildir.
+	Dikkat: IntValue sınıfının kodlarını tekrar inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import java.util.Random;
-import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		Scanner kb = new Scanner(System.in);
-		SampleAFactory factory = new SampleAFactory();
-		A x;
+		int value = 127;
+		Integer iVal1 = Integer.valueOf(127);
+		Integer iVal2 = Integer.valueOf(value);
 
-		System.out.print("Bir sayı giriniz:");
-		int n = Integer.parseInt(kb.nextLine());
+		System.out.println(iVal1 == iVal2 ? "Aynı nesne" : "Farklı nesneler");
 
-		while (n-- > 0) {
-			System.out.println("--------------------------------------------");
-			x = factory.getRandomA();
-			System.out.println(x.getClass().getName());
+		Integer iVal3 = Integer.valueOf(128);
+		Integer iVal4 = Integer.valueOf(128);
 
-			if (x instanceof B) {
-				B b = (B)x;
-
-				b.foo();
-			}
-			else
-				System.out.println("B veya B'den türemiş bir tür değil");
-
-			System.out.println("--------------------------------------------");
-		}
+		System.out.println(iVal3 == iVal4 ? "Aynı nesne" : "Farklı nesneler");
 	}
 }
 
-class SampleAFactory {
-	private final Random m_random = new Random();
 
-	public A getRandomA()
-	{
-		int val = m_random.nextInt(3);
-		A x;
 
-		switch (val) {
-			case 0:
-				x = new B();
-				break;
-			case 1:
-				x = new C();
-				break;
-			default:
-				x = new D();
-		}
-
-		return x;
-	}
-}
-
-class D extends A {
-	//...
-}
-
-class C extends B {
-	//...
-}
-
-class B extends A {
-	public void foo()
-	{
-		System.out.println("B.foo");
-	}
-
-	//..
-}
-
-class A {
-	//...
-}
