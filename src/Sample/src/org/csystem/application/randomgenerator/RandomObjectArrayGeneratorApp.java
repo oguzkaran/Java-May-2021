@@ -45,6 +45,21 @@ public class RandomObjectArrayGeneratorApp {
 
                 ArrayUtil.display(2, a);
             }
+            else if (object instanceof Integer) {
+                int val = (int)object;
+
+                System.out.printf("val = %d%n", val);
+            }
+            else if (object instanceof Double) {
+                double val = (double) object;
+
+                System.out.printf("val = %f%n", val);
+            }
+            else if (object instanceof Character) {
+                char ch = (char)object;
+
+                System.out.printf("ch = %c%n", ch);
+            }
             else {
                 Point p = (Point)object;
 

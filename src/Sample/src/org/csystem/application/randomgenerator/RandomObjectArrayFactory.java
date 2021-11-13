@@ -11,12 +11,12 @@ import java.util.Random;
 public class RandomObjectArrayFactory {
     private final Random m_random;
 
-    //String, Fraction, Date, int [], Point
+    //String, Fraction, Date, int [], Point, Integer, Double, Character
     private Object createObject()
     {
         Object object;
 
-        switch (m_random.nextInt(5)) {
+        switch (m_random.nextInt(8)) {
             case 0:
                 object = StringUtil.getRandomTextTR(m_random, m_random.nextInt(10) + 1);
                 break;
@@ -28,6 +28,15 @@ public class RandomObjectArrayFactory {
                 break;
             case 3:
                 object = ArrayUtil.getRandomArray(m_random, m_random.nextInt(10) + 5, 0, 99);
+                break;
+            case 4:
+                object = m_random.nextInt(100);
+                break;
+            case 5:
+                object = m_random.nextDouble();
+                break;
+            case 6:
+                object = (char) (m_random.nextInt(26) + (m_random.nextBoolean() ? 'A' : 'a'));
                 break;
             default:
                 object = Point.createCartesian(m_random.nextInt(200) - 100, m_random.nextInt(200) - 100);
