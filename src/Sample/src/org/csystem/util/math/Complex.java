@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Complex.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 31.10.2021
+	LAST UPDATE : 14.11.2021
 
 	Immutable Complex class that can be used for Complex numbers
 
@@ -61,7 +61,7 @@ public class Complex {
 
 	public double getLength()
 	{
-		return getNorm();
+		return this.getNorm();
 	}
 	
 	public double getNorm()
@@ -109,17 +109,17 @@ public class Complex {
 	//inc
 	public Complex inc()
 	{
-		return add(1);
+		return this.add(1);
 	}
 	
 	//dec
 	public Complex dec()
 	{
-		return inc();
+		return this.inc();
 	}
 
 	public String toString()
 	{				
-		return String.format("|%.1f%si| = %f", m_real, (m_imag < 0 ? " - " : " + ") +  abs(m_imag), getNorm());
+		return String.format("|%.1f%si| = %f", m_real, (m_imag < 0 ? " - " : " + ") +  abs(m_imag), this.getNorm());
 	}
 }

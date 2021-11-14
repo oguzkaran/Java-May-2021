@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Point.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 06.11.2021
+	LAST UPDATE : 14.11.2021
 
 	Point class that represents the 2(two) dimensional point
 
@@ -18,10 +18,10 @@ public class Point {
 	public double x;
 	public double y;
 
-	private Point(double a, double b, CoordinateType coordinateType)
+	private Point(double x, double y, CoordinateType coordinateType)
 	{
-		x = coordinateType == CoordinateType.CARTESIAN ? a : a * Math.cos(b);
-		y = coordinateType == CoordinateType.CARTESIAN ? b : a * Math.sin(b);
+		this.x = coordinateType == CoordinateType.CARTESIAN ? x : x * Math.cos(y);
+		this.y = coordinateType == CoordinateType.CARTESIAN ? y : y * Math.sin(y);
 	}
 
 	Point(Point p)
@@ -30,9 +30,9 @@ public class Point {
 		y = p.y;
 	}
 
-	public static Point createCartesian(double a, double b)
+	public static Point createCartesian(double x, double y)
 	{
-		return new Point(a, b, CoordinateType.CARTESIAN);
+		return new Point(x, y, CoordinateType.CARTESIAN);
 	}
 
 	public static Point createPolar(double r, double theta)
@@ -42,22 +42,22 @@ public class Point {
 
 	public double distance()
 	{
-		return distance(0, 0);
+		return this.distance(0, 0);
 	}
 
 	public double distance(Point other)
 	{
-		return distance(other.x, other.y);
+		return this.distance(other.x, other.y);
 	}
 
-	public double distance(double a, double b)
+	public double distance(double x, double y)
 	{
-		return sqrt((x - a) * (x - a) + (y - b) * (y - b));
+		return sqrt((this.x - x) * (this.x - x) + (this.y - y) * (this.y - y));
 	}
 
 	public void offset(double dxy)
 	{
-		offset(dxy, dxy);
+		this.offset(dxy, dxy);
 	}
 
 	public void offset(double dx, double dy)

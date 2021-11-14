@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Date.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 31.10.2021
+	LAST UPDATE : 14.11.2021
 
 	Date class for date operations
 
@@ -179,7 +179,7 @@ public class Date {
     {
         checkForDate(day, month, year, String.format("Invalid date value or values -> day: %d, month: %d, year: %d",
                 day, month, year));
-        set(day, month, year);
+        this.set(day, month, year);
     }
 
     public int getDay()
@@ -192,8 +192,8 @@ public class Date {
         if (day == m_day)
             return;
 
-        checkForDay(day, "Invalid day value:" + day);
-        set(day, m_month, m_year);
+        this.checkForDay(day, "Invalid day value:" + day);
+        this.set(day, m_month, m_year);
     }
 
     public int getMonthValue()
@@ -206,8 +206,8 @@ public class Date {
         if (month == m_month)
             return;
 
-        checkForMonth(month, "Invalid month value:" + month);
-        set(m_day, month, m_year);
+        this.checkForMonth(month, "Invalid month value:" + month);
+        this.set(m_day, month, m_year);
     }
 
     public Month getMonth()
@@ -217,7 +217,7 @@ public class Date {
 
     public void setMonth(Month month)
     {
-        setMonthValue(month.ordinal() + 1);
+        this.setMonthValue(month.ordinal() + 1);
     }
 
     public int getYear()
@@ -230,8 +230,8 @@ public class Date {
         if (year == m_year)
             return;
 
-        checkForYear(year, "Invalid year value:" + year);
-        set(m_day, m_month, year);
+        this.checkForYear(year, "Invalid year value:" + year);
+        this.set(m_day, m_month, year);
     }
 
     public DayOfWeek getDayOfWeek()
@@ -261,7 +261,7 @@ public class Date {
 
     public boolean isWeekday()
     {
-        return !isWeekend();
+        return !this.isWeekend();
     }
 
     public int getDaysOfMonth()
@@ -271,7 +271,7 @@ public class Date {
 
     public String toString()
     {
-        return toString('/');
+        return this.toString('/');
     }
 
     public String toString(char delimiter)
@@ -281,12 +281,12 @@ public class Date {
 
     public String toLongDateStringTR()
     {
-        return String.format("%s %s", toShortDateStringTR(), getDayOfWeekTR());
+        return String.format("%s %s", this.toShortDateStringTR(), this.getDayOfWeekTR());
     }
 
     public String toLongDateStringEN()
     {
-        return String.format("%s %s", toShortDateStringEN(), getDayOfWeekEN());
+        return String.format("%s %s", this.toShortDateStringEN(), this.getDayOfWeekEN());
     }
 
     public String toShortDateStringTR()

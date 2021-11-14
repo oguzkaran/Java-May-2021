@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Fraction.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 23.10.2021
+	LAST UPDATE : 14.11.2021
 
 	Fraction class that represents a fraction
 
@@ -76,8 +76,8 @@ public class Fraction {
 
         m_a = a;
         m_b = b;
-        setSign();
-        simplify();
+        this.setSign();
+        this.simplify();
     }
 
     public Fraction()
@@ -94,7 +94,7 @@ public class Fraction {
     public Fraction(int a, int b)
     {
         check(a, b);
-        set(a, b);
+        this.set(a, b);
     }
 
     public int getNumerator()
@@ -107,7 +107,7 @@ public class Fraction {
         if (m_a == val)
             return;
 
-        set(val, m_b);
+        this.set(val, m_b);
     }
 
     public int getDenominator()
@@ -121,7 +121,7 @@ public class Fraction {
             return;
 
         check(m_a, val);
-        set(m_a, val);
+        this.set(m_a, val);
     }
 
     public double getRealValue()
@@ -144,7 +144,6 @@ public class Fraction {
     {
         return add(m_a, m_b, val, 1);
     }
-
 
     //subtract methods
     public static Fraction subtract(int val, Fraction f)
@@ -202,7 +201,7 @@ public class Fraction {
 
     public void inc()
     {
-        inc(1);
+        this.inc(1);
     }
 
     //decrement methods
@@ -218,11 +217,11 @@ public class Fraction {
 
     public String toString()
     {
-        return toString(6);
+        return this.toString(6);
     }
 
     public String toString(int n)
     {
-        return String.format(String.format("%%d / %%d = %%.%df", n), m_a, m_b, getRealValue());
+        return String.format(String.format("%%d / %%d = %%.%df", n), m_a, m_b, this.getRealValue());
     }
 }

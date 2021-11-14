@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Time.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 31.10.2021
+	LAST UPDATE : 14.11.2021
 
 	Time class for time operations
 
@@ -185,7 +185,7 @@ public class Time {
 
     public String toString()
     {
-        return String.format("%s:%02d", toShortTimeString(), m_second);
+        return String.format("%s:%02d", this.toShortTimeString(), m_second);
     }
 
     public String toShortTimeString()
