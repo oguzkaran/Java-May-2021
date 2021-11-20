@@ -1,34 +1,41 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Programlamada 1(bir) byte'lık bölge kullanılmaz. Yani bu 1(bir) byte'lık bölge herhangi bir şekilde bir
-	değişken ya da bir nesne için tahsis edilmez. Bu bölgenin adresine "null adres" denir. null adres modern sistemlerin
-	hemen hemen hepsinde belleğin ilk gözüdür yani sıfır numaralı adrestir. Ancak sıfır numaralı adres olma zorunluluğu
-	yoktur. Kullanılmayan bir adres olmalıdır. Java'da null adres "null" isimli bir sabit ile temsil edilir. Bu sabit
-	"null reference" denir. Bir referansa null sabiti atandığında o referansın içerisinde bir adres vardır ancak adres
-	kullanılmadığı için herhangi bir nesnenin adresi olmaz. null referans değer türlerine atanmaz
+	Aşağıdaki örnekte miv referansına null atanması derleyicinin "değer verilmeme ihtimali olan bir değişkeni kullanıyorsun"
+	şeklindeki hata durumunu engellemek için kullanılmıştır. Şüphesiz program farklı şekilde de yazılabilir. Durumu
+	göstermek için bu şekilde yazılmıştır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.wrapper.MutableIntValue;
+
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		int a = null; //error
-		Sample s;
-		Color c;
-		String str;
-		int [] b;
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());
 
-		s = null;
-		c = null;
-		str = null;
-		b = null;
+		if (val < 1 || val > 3) {
+			System.out.println("Geçersiz değer girdiniz");
+			System.exit(1);
+		}
+
+		MutableIntValue miv;
+
+		switch (val) {
+			case 1:
+				miv = new MutableIntValue(-128);
+				break;
+			case 2:
+				miv = new MutableIntValue(0);
+				break;
+			case 3:
+				miv = new MutableIntValue(127);
+				break;
+		}
+
+		System.out.printf("Value=%d%n", miv.getVal());
 	}
 }
 
-
-class Sample {
-	//...
-}
-
-enum Color {
-
-}
