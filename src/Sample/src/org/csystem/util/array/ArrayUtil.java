@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 14.11.2021
+	LAST UPDATE : 20.11.2021
 
 	Utility class for array operations
 
@@ -93,6 +93,17 @@ public final class ArrayUtil {
     {
         for (int i = 0; i < length; ++i)
             dest[i] = src[i];
+    }
+
+    public static int [] copyOf(int [] a, int newLength)
+    {
+        int [] result = new int[newLength];
+        int min = Math.min(a.length, newLength);
+
+        for (int i = 0; i < min; ++i)
+            result[i] = a[i];
+
+        return result;
     }
 
     public static void display(int n, int [] a)
