@@ -16,8 +16,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public final class StringUtil {
-    private static final String ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-    private static final String ms_alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
+    private static final String ms_alphabetTR;
+    private static final String ms_alphabetEN;
+
+    static {
+        ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+        ms_alphabetEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ";
+    }
 
     private StringUtil()
     {

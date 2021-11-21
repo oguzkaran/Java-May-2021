@@ -69,6 +69,14 @@ public class CSDArrayList {
         return true;
     }
 
+    public void add(int index, Object elem)
+    {
+        if (m_elems.length == m_index)
+            changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
+
+        //TODO:
+    }
+
     public int capacity()
     {
         return m_elems.length;
@@ -76,6 +84,9 @@ public class CSDArrayList {
 
     public void clear()
     {
+        for (int i = 0; i < m_index; ++i)
+            m_elems[i] = null;
+
         m_index = 0;
     }
 
@@ -95,6 +106,16 @@ public class CSDArrayList {
     public boolean isEmpty()
     {
         return m_index == 0;
+    }
+
+    public Object remove(int index)
+    {
+        //...
+        Object oldVal = m_elems[index];
+
+        //TODO:
+
+        return oldVal;
     }
 
     public Object set(int index, Object elem)

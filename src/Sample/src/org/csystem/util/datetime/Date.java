@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Date.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 14.11.2021
+	LAST UPDATE : 21.11.2021
 
 	Date class for date operations
 
@@ -15,16 +15,25 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class Date {
-    private static final String [] ms_monthsTR = {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
-            "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
+    private static final String [] ms_monthsTR;
+    private static final String [] ms_daysOfWeekTR;
+    private static final String [] ms_monthsEN;
+    private static final String [] ms_daysOfWeekEN;
+    private static final Month[] ms_months;
+    private static final DayOfWeek[] ms_dayOfWeeks;
 
-    private static final String [] ms_daysOfWeekTR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+    static {
+        ms_monthsTR = new String[]{"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
+                "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
 
-    private static final String [] ms_monthsEN = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        ms_daysOfWeekTR = new String[]{"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
 
-    private static final String [] ms_daysOfWeekEN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-    private static final Month[] ms_months = Month.values();
-    private static final DayOfWeek[] ms_dayOfWeeks = DayOfWeek.values();
+        ms_monthsEN = new String[]{"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+        ms_daysOfWeekEN = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        ms_months = Month.values();
+        ms_dayOfWeeks = DayOfWeek.values();
+    }
 
     private static boolean isValidDate(int day, int month, int year)
     {
