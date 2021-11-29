@@ -1,46 +1,27 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	non-static bir metot çağrısında metot sanal ise derleyici "çalışma zamanında referansın dinamik türüne bak, dinamik
-	türe ilişkin sınıfta metot override edilmişse onu çağır" kodunu üretir
+	Aşağıdaki örnekte referanslara ilişkin türler için toString metodu çağrılarak yazı birleştirmesi yapılır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.datetime.Date;
+import org.csystem.util.datetime.Time;
+import org.csystem.util.math.Fraction;
+import org.csystem.util.math.geometry.Point;
+
+import java.util.Random;
 
 class App {
 	public static void main(String [] args)
 	{
-		B x = new B();
-		A y;
+		Random r = new Random();
+		Date date = Date.random(r);
+		Time time = Time.random(r);
+		Fraction fraction = new Fraction(3, 4);
+		Point point = Point.createCartesian(100.7, 200.4);
 
-		y = x;
-
-		y.foo();
-		y.bar(10);
-	}
-}
-
-class B extends A {
-	public void foo() //override
-	{
-		System.out.println("B.foo()");
-	}
-
-	public void bar(int a) //override
-	{
-		System.out.println("B.bar(int)");
-	}
-
-	public void bar(double a) //overload
-	{
-		System.out.println("B.bar(double)");
-	}
-}
-class A {
-	public void foo()
-	{
-		System.out.println("A.foo()");
-	}
-
-	public void bar(int a)
-	{
-		System.out.println("A.bar()");
+		System.out.println("Tarih:" + date); //System.out.println("Tarih:" + date.toString());
+		System.out.println("Zaman:" +  time); //System.out.println("Zaman:" +  time.toString());
+		System.out.println("Kesir:" + fraction); //System.out.println("Kesir:" + fraction.toString());
+		System.out.println("Nokta:" + point); //System.out.println("Nokta:" + point.toString());
 	}
 }
