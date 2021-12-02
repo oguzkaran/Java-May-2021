@@ -2,15 +2,16 @@ package org.csystem.application.parser;
 
 import java.util.Scanner;
 
-public final class ParserStdInSourceApp {
-    private ParserStdInSourceApp()
+public final class DigitParserStdInSourceApp {
+    private DigitParserStdInSourceApp()
     {
     }
 
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
-        Parser parser = new Parser();
+        ParseFactory factory = new ParseFactory();
+        Parser parser = factory.getParser(ParserType.DIGIT);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -23,9 +24,9 @@ public final class ParserStdInSourceApp {
             StringSource ss = new StringSource(s);
             CharArraySource cs = new CharArraySource(s);
             parser.setSource(ss);
-            System.out.printf("Boşluk sayısı:%d%n", parser.countWhitespaces());
+            System.out.printf("Rakam sayısı:%d%n", parser.doParse());
             parser.setSource(cs);
-            System.out.printf("Boşluk sayısı:%d%n", parser.countWhitespaces());
+            System.out.printf("Rakam sayısı:%d%n", parser.doParse());
             System.out.println("--------------------------------------------");
         }
     }

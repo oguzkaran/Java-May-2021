@@ -1,6 +1,6 @@
 package org.csystem.application.parser;
 
-public class Parser {
+public abstract class Parser {
     private Source m_source;
 
     public Parser()
@@ -24,31 +24,5 @@ public class Parser {
         m_source = source;
     }
 
-    public int countWhitespaces()
-    {
-        m_source.reset();
-        int count = 0;
-
-        int ch;
-
-        while ((ch = m_source.nextChar()) != -1)
-            if (Character.isWhitespace(ch))
-                ++count;
-
-        return count;
-    }
-
-    public int countDigits()
-    {
-        m_source.reset();
-        int count = 0;
-
-        int ch;
-
-        while ((ch = m_source.nextChar()) != -1)
-            if (Character.isDigit(ch))
-                ++count;
-
-        return count;
-    }
+    public abstract int doParse();
 }
