@@ -1,72 +1,61 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıdaki örnekte foo metodu MyException fırlatıldığında onu yakalamış ve aynı nesneyi yeniden fırlatmıştır. Bu işleme
-    "rethrow" denir.
-
-    Aşağıdaki örnekte foo metodu müşteri kodları açısından MyException da fırlatabilir. Bu foo için dokümana yazılır. foo
-    metodunu yazan programcı açısından ise MyException hem iligili try bloğunda işlenmiş hem de aynı exception nesnesi
-    müşteri koda fırlatılmış olur
+    Aşağıdaki örnekte exception fırlatılması durumunda MathException sınıfının getMessage metodunun çağrıldığına
+    dikkat ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.Scanner;
+import org.csystem.util.console.Console;
 
 class App {
 	public static void main(String [] args)
 	{
 		try {
-			Sample.foo();
-			System.out.println("main:try sonu");
-		}
-		catch (YourException ex) {
-			System.out.println("main:YourException yakalandı");
-		}
-		catch (MyException ex) {
-			System.out.println("main:MyException yakalandı");
+			double val = Console.readDouble("Bir sayı giriniz:");
+
+			double result = MathUtil.myLog(val);
+
+			System.out.printf("log(%.2f) = %f%n", val, result);
 		}
 		catch (Throwable ex) {
-			System.out.println("main:Exception yakalandı");
+			System.out.printf("%s%n", ex.getMessage());
 		}
 
 		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class Sample {
-	public static void foo()
-	{
-		try {
-			Scanner kb = new Scanner(System.in);
-			System.out.print("Bir sayı giriniz:");
-			double val = Double.parseDouble(kb.nextLine());
-
-			System.out.printf("log(%.2f) = %f%n", val, MathUtil.myLog(val));
-			System.out.println("foo:try sonu");
-		}
-		catch (MyException ex) {
-			System.out.println("foo:MyException yakalandı");
-			throw ex;
-		}
-		System.out.println("foo sonu");
-	}
-}
 
 class MathUtil {
 	public static double myLog(double val)
 	{
 		if (val == 0)
-			throw new MyException();
+			throw new MathException("val can not be zero", MathExceptionStatus.ZERO);
 
 		if (val < 0)
-			throw new YourException();
+			throw new MathException("val can not be negative", MathExceptionStatus.NEGATIVE);
 
 		return Math.log(val);
 	}
 }
 
-class MyException extends RuntimeException {
-	//...
-}
+enum MathExceptionStatus {ZERO, NEGATIVE}
 
-class YourException extends RuntimeException {
-	//...
+class MathException extends RuntimeException {
+	private final MathExceptionStatus m_status;
+
+	public MathException(String message, MathExceptionStatus status)
+	{
+		super(message);
+		m_status = status;
+	}
+
+	public String getMessage()
+	{
+		return String.format("Message:%s, Error Status:%s", super.getMessage(), m_status);
+	}
+
+	public MathExceptionStatus getStatus()
+	{
+		return m_status;
+	}
 }
