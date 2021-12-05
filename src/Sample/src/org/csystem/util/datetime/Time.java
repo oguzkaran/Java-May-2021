@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : Time.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 14.11.2021
+	LAST UPDATE : 05.12.2021
 
 	Time class for time operations
 
@@ -22,8 +22,7 @@ public class Time {
 
     private static void doWorkForException(String message)
     {
-        System.out.println(message);
-        System.exit(1); //Exception işlemleri konusuna kadar sabredin
+        throw new DateTimeException(message);
     }
 
     private static boolean isValidForBound(int val, int bound)
