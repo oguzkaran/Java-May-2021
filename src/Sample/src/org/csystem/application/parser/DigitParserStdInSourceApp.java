@@ -11,7 +11,6 @@ public final class DigitParserStdInSourceApp {
     {
         Scanner kb = new Scanner(System.in);
         ParseFactory factory = new ParseFactory();
-        Parser parser = factory.getParser(ParserType.DIGIT);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -23,9 +22,9 @@ public final class DigitParserStdInSourceApp {
             System.out.println("--------------------------------------------");
             StringSource ss = new StringSource(s);
             CharArraySource cs = new CharArraySource(s);
-            parser.setSource(ss);
+            Parser parser = factory.getParser(ParserType.WHITESPACE);
             System.out.printf("Rakam sayısı:%d%n", parser.doParse());
-            parser.setSource(cs);
+            parser = factory.getParser(ParserType.WHITESPACE);
             System.out.printf("Rakam sayısı:%d%n", parser.doParse());
             System.out.println("--------------------------------------------");
         }

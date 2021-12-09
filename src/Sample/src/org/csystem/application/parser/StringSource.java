@@ -1,6 +1,6 @@
 package org.csystem.application.parser;
 
-public class StringSource extends Source {
+public class StringSource implements ISource {
     private final String m_str;
     private int m_index;
 

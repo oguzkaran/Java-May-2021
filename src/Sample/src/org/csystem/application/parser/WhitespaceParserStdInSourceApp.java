@@ -11,7 +11,7 @@ public final class WhitespaceParserStdInSourceApp {
     {
         Scanner kb = new Scanner(System.in);
         ParseFactory factory = new ParseFactory();
-        Parser parser = factory.getParser(ParserType.WHITESPACE);
+
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -23,9 +23,9 @@ public final class WhitespaceParserStdInSourceApp {
             System.out.println("--------------------------------------------");
             StringSource ss = new StringSource(s);
             CharArraySource cs = new CharArraySource(s);
-            parser.setSource(ss);
+            Parser parser = factory.getParser(ParserType.WHITESPACE);
             System.out.printf("Boşluk sayısı:%d%n", parser.doParse());
-            parser.setSource(cs);
+            parser = factory.getParser(ParserType.WHITESPACE);
             System.out.printf("Boşluk sayısı:%d%n", parser.doParse());
             System.out.println("--------------------------------------------");
         }

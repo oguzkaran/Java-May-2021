@@ -1,6 +1,6 @@
 package org.csystem.application.parser;
 
-public class CharArraySource extends Source {
+public class CharArraySource implements ISource {
     private final char[] m_chars;
     private int m_index;
 

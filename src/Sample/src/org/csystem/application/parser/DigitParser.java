@@ -1,37 +1,37 @@
 package org.csystem.application.parser;
 
 public class DigitParser extends Parser {
-    private Source m_source;
 
     public DigitParser()
     {
     }
 
-    public DigitParser(Source source)
+    public DigitParser(ISource source)
     {
+        super(source);
         //...
-        m_source = source;
+
     }
 
-    public Source getSource()
+    public ISource getSource()
     {
-        return m_source;
+        return source;
     }
 
-    public void setSource(Source source)
+    public void setSource(ISource source)
     {
         //...
-        m_source = source;
+        this.source = source;
     }
 
     public int doParse()
     {
-        m_source.reset();
+        source.reset();
         int count = 0;
 
         int ch;
 
-        while ((ch = m_source.nextChar()) != -1)
+        while ((ch = source.nextChar()) != -1)
             if (Character.isDigit(ch))
                 ++count;
 
