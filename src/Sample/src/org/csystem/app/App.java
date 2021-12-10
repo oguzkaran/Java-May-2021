@@ -1,31 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	4. Bir sınıf referansının onun desteklemediği bir arayüz referansına dönüştürülmesi:
-	Bu işlem tür dönüştürme operatörü ile yapılabilir. Çalışma zamanı sırasında kaynak referansın
-	dinamik türünün hedef arayüzü destekleyip desteklemediğine bakılır. Destekliyorsa haklı dönüşümdür. Desteklemiyorsa
-	haksız dönüşümdür, ClassCastException fırlatılır
+	twr bloğu yalnız başına olabilir. Scanner sınıfı Closeable arayüzünü destekler
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		A a = new B();
-		IX ix;
+		try (Scanner kb = new Scanner(System.in)) {
+			System.out.print("Bir sayı giriniz:");
+			int val = Integer.parseInt(kb.nextLine());
 
-		ix = (IX)a; //Haklı dönüşüm
-
-		System.out.println("Tekrar yapıyor musunuz?");
+			System.out.println(val * val);
+		}
 	}
-}
-
-class B extends A {
-	//...
-}
-
-class A {
-	//...
-}
-
-interface IX {
-	//...
 }

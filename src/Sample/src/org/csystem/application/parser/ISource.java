@@ -1,6 +1,6 @@
 package org.csystem.application.parser;
 
-public abstract interface ISource {
+public interface ISource {
     int nextChar();
     void reset();
 }

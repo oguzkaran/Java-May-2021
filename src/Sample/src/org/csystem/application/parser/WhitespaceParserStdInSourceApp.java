@@ -23,9 +23,10 @@ public final class WhitespaceParserStdInSourceApp {
             System.out.println("--------------------------------------------");
             StringSource ss = new StringSource(s);
             CharArraySource cs = new CharArraySource(s);
-            Parser parser = factory.getParser(ParserType.WHITESPACE);
+            Parser parser = factory.getParser(ParserType.WHITESPACE, ss);
+
             System.out.printf("Boşluk sayısı:%d%n", parser.doParse());
-            parser = factory.getParser(ParserType.WHITESPACE);
+            parser = factory.getParser(ParserType.WHITESPACE, cs);
             System.out.printf("Boşluk sayısı:%d%n", parser.doParse());
             System.out.println("--------------------------------------------");
         }

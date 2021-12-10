@@ -22,9 +22,10 @@ public final class DigitParserStdInSourceApp {
             System.out.println("--------------------------------------------");
             StringSource ss = new StringSource(s);
             CharArraySource cs = new CharArraySource(s);
-            Parser parser = factory.getParser(ParserType.WHITESPACE);
+            Parser parser = factory.getParser(ParserType.DIGIT, ss);
+
             System.out.printf("Rakam sayısı:%d%n", parser.doParse());
-            parser = factory.getParser(ParserType.WHITESPACE);
+            parser = factory.getParser(ParserType.DIGIT, cs);
             System.out.printf("Rakam sayısı:%d%n", parser.doParse());
             System.out.println("--------------------------------------------");
         }
