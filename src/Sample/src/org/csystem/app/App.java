@@ -1,18 +1,13 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	twr bloğu yalnız başına olabilir. Scanner sınıfı Closeable arayüzünü destekler
+    Aşağıdaki örnekte directory içerisindeki dosyalar ve boş dizinler silinmektedir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.Scanner;
+import org.csystem.application.io.file.FileDeleteApp;
 
 class App {
 	public static void main(String [] args)
 	{
-		try (Scanner kb = new Scanner(System.in)) {
-			System.out.print("Bir sayı giriniz:");
-			int val = Integer.parseInt(kb.nextLine());
-
-			System.out.println(val * val);
-		}
+		FileDeleteApp.run(args);
 	}
 }
