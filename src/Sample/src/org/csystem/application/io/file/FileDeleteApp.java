@@ -2,6 +2,8 @@ package org.csystem.application.io.file;
 
 import java.io.File;
 
+import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
+
 public final class FileDeleteApp {
     private static void listFiles(File dir)
     {
@@ -14,10 +16,7 @@ public final class FileDeleteApp {
 
     public static void run(String [] args)
     {
-        if (args.length != 1) {
-            System.err.println("Wrong number of arguments");
-            System.exit(1);
-        }
+        checkIfNotEqualAndExit(args, 1, "Wrong number of arguments");
 
         File dir = new File(args[0]);
 
