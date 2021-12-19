@@ -1,6 +1,6 @@
 package org.csystem.application.parser;
 
 public interface ISource {
-    int nextChar();
-    void reset();
+    int nextChar() throws Exception;
+    void reset() throws Exception;
 }

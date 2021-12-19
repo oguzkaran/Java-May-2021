@@ -5,7 +5,7 @@
     aldığı dosya olarak kopyalayacaktır. Hedef dosya varsa hedef dosya ismi ve uzantısının sonuna "-bak" eklenerek
     yedeklenecektir. Daha önce yedeklenmişse üzerine yazılacaktır. Bu işlemden sonra kopyalama yapılacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
-package org.csystem.application.io.file;
+package org.csystem.application.io.file.copy;
 
 import org.csystem.util.console.CommandLineUtil;
 
@@ -36,7 +36,6 @@ public class BackupAndCopyApp {
             System.err.println("File not found");
         }
         catch (IOException ignore) {
-            ignore.printStackTrace();
             System.err.println("Invalid arguments");
         }
     }

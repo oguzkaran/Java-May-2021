@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : ArrayUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 20.11.2021
+	LAST UPDATE : 19.12.2021
 
 	Utility class for array operations
 
@@ -139,6 +139,24 @@ public final class ArrayUtil {
     {
         for (String s : str)
             System.out.println(s);
+    }
+
+    public static void display(byte [] b)
+    {
+        display(b.length, b);
+    }
+
+    public static void display(int length, byte [] b)
+    {
+        display(length, ' ', '\n', b);
+    }
+
+    public static void display(int length, char sep, char end, byte [] b)
+    {
+        for (int i = 0; i < length; ++i)
+            System.out.printf("%d%c", b[i], sep);
+
+        System.out.print(end);
     }
 
     public static void drawHistogram(int [] data, int n, char ch) //[0, data.length - 1]

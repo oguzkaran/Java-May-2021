@@ -1,12 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    FileOutputStream sınıfının File türden ve String türden tek parametreli ctor'ları yeni bir dosya yaratıp dosyayı açar.
-    Eğer dosya varsa dosyayı sıfırlayarak (yani bilgileri kaybederek) açar. Yazma işlemi için en temel metot bir byte'lık
-    bilgiyi yazan write metodudur
+    FileOutputStream sınıfının byte türden dizi parametreli write metotları ile yazma işlemi yapılabilir. Aşağıdaki
+    örnekte data dizisinin eleman sayısının yarısından sonraki elemanların değerleri dosyaya yazılmaktadır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
 
+import org.csystem.util.array.ArrayUtil;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 
 import static org.csystem.util.console.CommandLineUtil.*;
 
@@ -15,11 +17,16 @@ public class WriterApp {
     {
         checkIfNotEqualAndExit(args, 2, "Invalid arguments");
 
-        try (FileOutputStream fos = new FileOutputStream(args[0])) {
-            int count = Integer.parseInt(args[1]);
+        Random r = new Random();
 
-            for (int i = 0; i < count; ++i)
-                fos.write((byte)i);
+        try (FileOutputStream fos = new FileOutputStream(args[0], true)) {
+            int length = Integer.parseInt(args[1]);
+            byte [] data = new byte[length];
+
+            r.nextBytes(data);
+
+            ArrayUtil.display(data);
+            fos.write(data);
         }
         catch (NumberFormatException ignore) {
             System.err.println("Invalid number format");
@@ -29,3 +36,4 @@ public class WriterApp {
         }
     }
 }
+

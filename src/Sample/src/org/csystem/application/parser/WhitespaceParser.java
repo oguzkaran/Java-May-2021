@@ -24,15 +24,22 @@ public class WhitespaceParser extends Parser {
 
     public int doParse()
     {
-        source.reset();
-        int count = 0;
+        try {
+            source.reset();
+            int count = 0;
 
-        int ch;
+            int ch;
 
-        while ((ch = source.nextChar()) != -1)
-            if (Character.isWhitespace(ch))
-                ++count;
+            while ((ch = source.nextChar()) != -1)
+                if (Character.isWhitespace(ch))
+                    ++count;
 
-        return count;
+            return count;
+        }
+        catch (Exception ignore) {
+
+        }
+
+        return -1;
     }
 }
