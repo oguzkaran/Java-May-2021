@@ -8,20 +8,11 @@
 
 package org.csystem.app;
 
-import java.io.FileOutputStream;
-
-import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
+import org.csystem.application.io.file.BackupAndCopyApp;
 
 class App {
 	public static void main(String [] args)
 	{
-		checkIfNotEqualAndExit(args, 1, "Wrong number of arguments");
-
-		try (FileOutputStream fos = new FileOutputStream(args[0])) {
-			//...
-		}
-		catch (Throwable ex) {
-			System.err.println(ex.getMessage());
-		}
+		BackupAndCopyApp.run(args);
 	}
 }

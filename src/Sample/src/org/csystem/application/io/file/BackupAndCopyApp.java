@@ -7,6 +7,37 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.application.io.file;
 
-public class BackupAndCopyApp {
+import org.csystem.util.console.CommandLineUtil;
 
+import java.io.IOException;
+import java.nio.file.NoSuchFileException;
+
+public class BackupAndCopyApp {
+    private static String [] checkCommandLineArgs(String [] args)
+    {
+        if (args.length != 2 && args.length != 0) {
+            System.err.println("Usage:java CopyAndBackupApp.jar <source path> <destination path>");
+            System.exit(1);
+        }
+
+        return CommandLineUtil.getArguments(args, "Input source and destination file paths:");
+    }
+
+    public static void run(String [] args)
+    {
+        args = checkCommandLineArgs(args);
+
+        try {
+            BackupAndCopy backupAndCopy = new BackupAndCopy(args[0], args[1]);
+
+            System.out.println(backupAndCopy.run());
+        }
+        catch (NoSuchFileException ignore) {
+            System.err.println("File not found");
+        }
+        catch (IOException ignore) {
+            ignore.printStackTrace();
+            System.err.println("Invalid arguments");
+        }
+    }
 }
