@@ -3,7 +3,7 @@
 	AUTHOR      : Oğuz Karan
 	LAST UPDATE : 15.10.2021
 
-	BitConverter class for byte operations with built-in types
+	Utility class for byte operations with built-in types
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free

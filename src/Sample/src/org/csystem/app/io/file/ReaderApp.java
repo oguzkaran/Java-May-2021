@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    ByteBuffer sınıfının wrap isimli metodu kullanılarak byte türden dizi sarmalanıp ilgili türe dönüştürülebilir
+    ReaderApp
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
 
@@ -16,20 +16,36 @@ public class ReaderApp {
         checkIfNotEqualAndExit(args, 1, "Invalid arguments");
 
         try (FileInputStream fis = new FileInputStream(args[0])) {
-            byte [] data = new byte[Double.BYTES];
-            int result;
+            byte [] dataLen = new byte[Short.BYTES];
 
-            while ((result = fis.read(data)) > 0) {
-                var val = ByteBuffer.wrap(data, 0, result).getDouble();
+            for (;;) {
+                int result = fis.read(dataLen);
 
-                System.out.printf("%f%n", val);
+                if (result == -1)
+                    break;
+
+                if (result != 2)
+                    throw new IOException("File format corruption");
+
+                short len = ByteBuffer.wrap(dataLen).getShort();
+
+                byte [] data = new byte[len];
+
+                result = fis.read(data);
+
+                if (result != len)
+                    throw new IOException("File format corruption");
+
+                String text = new String(data);
+
+                System.out.println(text);
             }
         }
         catch (FileNotFoundException ignore) {
             System.err.println("File not found");
         }
-        catch (IOException ignore) {
-            System.err.println("IO problem occurs. Try again later!...");
+        catch (IOException ex) {
+            System.err.printf("Exception occurs:%s", ex.getMessage());
         }
     }
 }

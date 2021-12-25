@@ -1,31 +1,34 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    ByteBuffer sınıfı ile int türden bir bilginin byte dizisine çevrilmesi için bir yöntem
+    WriterApp
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Random;
+import java.util.Scanner;
 
 import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
 
 public class WriterApp {
     public static void main(String[] args)
     {
-        checkIfNotEqualAndExit(args, 2, "Invalid arguments");
+        checkIfNotEqualAndExit(args, 1, "Invalid arguments");
 
-        Random r = new Random();
+        Scanner kb = new Scanner(System.in);
 
         try (FileOutputStream fos = new FileOutputStream(args[0], true)) {
-            int count = Integer.parseInt(args[1]);
+            for (;;) {
+                System.out.print("Input a text:");
+                String text = kb.nextLine();
 
-            while (count-- > 0) {
-                double val = r.nextDouble();
+                if ("quit".equals(text))
+                    break;
 
-                byte [] data = ByteBuffer.allocate(Double.BYTES).putDouble(val).array();
+                byte [] data = text.getBytes();
+                byte [] dataLen = ByteBuffer.allocate(Short.BYTES).putShort((short)data.length).array();
 
-                System.out.printf("%f%n", val);
+                fos.write(dataLen);
                 fos.write(data);
             }
         }
