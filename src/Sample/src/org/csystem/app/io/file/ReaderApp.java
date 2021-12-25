@@ -1,33 +1,29 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    FileInputStream sınıfının byte dizi parametreli read metotları byte türden dizinin içerisine dosyadaki bilgileri
-    okur. Ne kadar okuduğu miktarı ile de geri döner. Bu durumda programcının ne kadar okunduğu miktarına göre dizinin
-    elemanlarını kullanması gerekir. Yani aslında dizinin uzunluğu ya da okumak için verilen sayı en fazla ne kadar
-    okunacağını belirtir
+    ByteBuffer sınıfının wrap isimli metodu kullanılarak byte türden dizi sarmalanıp ilgili türe dönüştürülebilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
-
-import org.csystem.util.array.ArrayUtil;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
 
 public class ReaderApp {
     public static void main(String[] args)
     {
-        checkIfNotEqualAndExit(args, 2, "Invalid arguments");
+        checkIfNotEqualAndExit(args, 1, "Invalid arguments");
 
         try (FileInputStream fis = new FileInputStream(args[0])) {
-            byte [] data = new byte[Integer.parseInt(args[1])];
+            byte [] data = new byte[Double.BYTES];
             int result;
 
-            while ((result = fis.read(data)) > 0)
-                ArrayUtil.display(result, ' ', '\n', data);
-        }
-        catch (NumberFormatException ignore) {
-            System.err.println("Invalid block size");
+            while ((result = fis.read(data)) > 0) {
+                var val = ByteBuffer.wrap(data, 0, result).getDouble();
+
+                System.out.printf("%f%n", val);
+            }
         }
         catch (FileNotFoundException ignore) {
             System.err.println("File not found");

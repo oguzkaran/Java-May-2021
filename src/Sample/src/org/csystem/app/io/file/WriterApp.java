@@ -1,16 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    FileOutputStream sınıfının byte türden dizi parametreli write metotları ile yazma işlemi yapılabilir. Aşağıdaki
-    örnekte data dizisinin eleman sayısının yarısından sonraki elemanların değerleri dosyaya yazılmaktadır
+    ByteBuffer sınıfı ile int türden bir bilginin byte dizisine çevrilmesi için bir yöntem
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
 
-import org.csystem.util.array.ArrayUtil;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Random;
 
-import static org.csystem.util.console.CommandLineUtil.*;
+import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
 
 public class WriterApp {
     public static void main(String[] args)
@@ -20,13 +18,16 @@ public class WriterApp {
         Random r = new Random();
 
         try (FileOutputStream fos = new FileOutputStream(args[0], true)) {
-            int length = Integer.parseInt(args[1]);
-            byte [] data = new byte[length];
+            int count = Integer.parseInt(args[1]);
 
-            r.nextBytes(data);
+            while (count-- > 0) {
+                double val = r.nextDouble();
 
-            ArrayUtil.display(data);
-            fos.write(data);
+                byte [] data = ByteBuffer.allocate(Double.BYTES).putDouble(val).array();
+
+                System.out.printf("%f%n", val);
+                fos.write(data);
+            }
         }
         catch (NumberFormatException ignore) {
             System.err.println("Invalid number format");
