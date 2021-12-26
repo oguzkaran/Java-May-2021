@@ -1,28 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Klavye işlemleri için BufferedReader sınıfı aşağıdaki gibi kullanılabilir. Sınıfın metotlarının IOException fırlattığına
-    dikkat ediniz
+    Aşağıdaki programdan üretilen dosya BufferedReader sınıfının readLine metoduyla satır satır okunduğunda toplam
+    kaç satır okunur?
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import org.csystem.application.parser.LetterParserFileSourceApp;
 
 class App {
-	public static void main(String [] args) throws IOException
+	public static void main(String [] args)
 	{
-		BufferedReader kb = new BufferedReader(new InputStreamReader(System.in));
-
-		for (;;) {
-			System.out.print("Bir yazı giriniz:");
-			String str = kb.readLine();
-
-			if ("elma".equals(str))
-				break;
-
-			byte [] data = str.getBytes(StandardCharsets.UTF_8);
-			System.out.printf("Length:%d%n", data.length);
-		}
+		LetterParserFileSourceApp.run(args);
 	}
 }

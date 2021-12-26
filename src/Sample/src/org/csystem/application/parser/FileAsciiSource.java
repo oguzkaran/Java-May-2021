@@ -1,32 +1,18 @@
 package org.csystem.application.parser;
 
 import java.io.Closeable;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 
-public class FileAsciiSource implements ISource , Closeable {
-    private FileInputStream m_fis;
-    private final String m_path;
-
-    public FileAsciiSource(String path) throws FileNotFoundException
+public class FileAsciiSource extends FileSource {
+    public FileAsciiSource(String path) throws IOException
     {
-        m_path = path;
-        m_fis = new FileInputStream(m_path);
+        this(Path.of(path));
     }
 
-    public int nextChar() throws IOException
+    public FileAsciiSource(Path path) throws IOException
     {
-        return m_fis.read();
-    }
-
-    public void reset() throws FileNotFoundException
-    {
-        m_fis = new FileInputStream(m_path);
-    }
-
-    public void close() throws IOException
-    {
-        m_fis.close();
+        super(path, StandardCharsets.US_ASCII);
     }
 }

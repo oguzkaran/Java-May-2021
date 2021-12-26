@@ -5,8 +5,8 @@ import org.csystem.util.console.CommandLineUtil;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public final class DigitParserFileSourceApp {
-    private DigitParserFileSourceApp()
+public final class LetterParserFileAsciiSourceApp {
+    private LetterParserFileAsciiSourceApp()
     {
     }
 
@@ -17,11 +17,9 @@ public final class DigitParserFileSourceApp {
         ParseFactory factory = new ParseFactory();
 
         try (FileAsciiSource fs = new FileAsciiSource(args[0])) {
-            Parser parser1 = factory.getParser(ParserType.DIGIT, fs);
-            Parser parser2 = factory.getParser(ParserType.WHITESPACE, fs);
+            Parser parser = factory.getParser(ParserType.LETTER, fs);
 
-            System.out.printf("Number of digits:%d%n", parser1.doParse());
-            System.out.printf("Number of whitespaces:%d%n", parser2.doParse());
+            System.out.printf("Number of Letters:%d%n", parser.doParse());
         }
         catch (FileNotFoundException ignore) {
             System.err.println("File Not found");
