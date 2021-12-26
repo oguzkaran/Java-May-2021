@@ -1,11 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    WriterApp
+
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app.io.file;
 
-import java.io.FileOutputStream;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
 import static org.csystem.util.console.CommandLineUtil.checkIfNotEqualAndExit;
@@ -17,7 +20,7 @@ public class WriterApp {
 
         Scanner kb = new Scanner(System.in);
 
-        try (FileOutputStream fos = new FileOutputStream(args[0], true)) {
+        try (BufferedWriter bw = Files.newBufferedWriter(Path.of(args[0]), StandardCharsets.UTF_8, StandardOpenOption.APPEND, StandardOpenOption.CREATE)) {
             for (;;) {
                 System.out.print("Input a text:");
                 String text = kb.nextLine();
@@ -25,19 +28,12 @@ public class WriterApp {
                 if ("quit".equals(text))
                     break;
 
-                byte [] data = text.getBytes();
-                byte [] dataLen = ByteBuffer.allocate(Short.BYTES).putShort((short)data.length).array();
-
-                fos.write(dataLen);
-                fos.write(data);
+                bw.write(text);
+                bw.newLine();
             }
-        }
-        catch (NumberFormatException ignore) {
-            System.err.println("Invalid number format");
         }
         catch (IOException ignore) {
             System.err.println("IO problem occurs. Try again later!...");
         }
     }
 }
-
