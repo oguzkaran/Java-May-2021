@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------
 	FILE        : BitConverter.java
 	AUTHOR      : Oğuz Karan
-	LAST UPDATE : 15.10.2021
+	LAST UPDATE : 02.01.2022
 
 	Utility class for byte operations with built-in types
 
@@ -14,6 +14,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 public final class BitConverter {
 	private static ByteBuffer allocate(int capacity)
@@ -53,6 +54,24 @@ public final class BitConverter {
 	public static byte [] getBytes(String str, Charset charset)
 	{
 		return str.getBytes(charset);
+	}
+
+	public static byte[] getFixedBytes(String str, int n)
+	{
+		char [] chars = new char[n];
+
+		System.arraycopy(str.toCharArray(), 0, chars, 0, str.length());
+
+		return getBytes(chars);
+	}
+
+	public static String toStringFixed(byte [] data)
+	{
+		String str = new String(BitConverter.toCharArray(data, data.length));
+
+		str = str.substring(0, str.indexOf('\0'));
+
+		return str;
 	}
 
 	public static byte [] getBytes(byte value)
@@ -339,7 +358,7 @@ public final class BitConverter {
 	{
 		char [] result = new char[count];
 
-		for (int i = 0, idx = startIndex; i < count; ++i, idx += Character.BYTES)
+		for (int i = 0, idx = startIndex; i < count && idx < data.length; ++i, idx += Character.BYTES)
 			result[i] = toChar(data, idx);
 
 		return result;
