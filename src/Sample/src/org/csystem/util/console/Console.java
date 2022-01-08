@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------------
 	FILE        : StringUtil.java
 	AUTHOR      : Java-May-2021 Group
-	LAST UPDATE : 04.12.2021
+	LAST UPDATE : 08.01.2022
 
-	Console class that is used fo standard input and output operations
+	Console class that is used for standard input and output operations
 
 	Copyleft (c) 1993 by C and System Programmers Association (CSD)
 	All Rights Free
@@ -87,7 +87,16 @@ public final class Console {
         return readInt(message + '\n', errMessage + '\n');
     }
 
+    public static String read(String message)
+    {
+        System.out.print(message);
+        return ms_kb.nextLine();
+    }
+
+    public static String readLine()
+    {
+        return ms_kb.nextLine();
+    }
 
     //...
-
 }
