@@ -225,6 +225,13 @@ public final class NumberUtil {
 		
 		return c;					
 	}
+
+	public static String numberToText(int val)
+	{
+		//TODO:
+		return numberToText3DigitsTR(val);
+	}
+
 	
 	public static void printGoldbachPrimes(int val)
 	{
