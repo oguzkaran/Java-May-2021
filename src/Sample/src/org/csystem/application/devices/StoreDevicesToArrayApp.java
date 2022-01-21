@@ -13,7 +13,7 @@ public final class StoreDevicesToArrayApp {
         Random random = new Random();
         Scanner kb = new Scanner(System.in);
         System.out.print("Başlangıç \"capacity\" değerini giriniz:");
-        ArrayList devices = new ArrayList(Integer.parseInt(kb.nextLine()));
+        ArrayList<DeviceInfo> devices = new ArrayList<>(Integer.parseInt(kb.nextLine()));
 
         for (;;) {
             System.out.print("Cihaz adını giriniz:");
@@ -34,10 +34,9 @@ public final class StoreDevicesToArrayApp {
 
         System.out.println("-------------------------------------------");
 
-        for (Object o : devices) {
-            DeviceInfo di = (DeviceInfo)o;
-            System.out.println(di.toString());
-        }
+        for (DeviceInfo di : devices)
+            System.out.println(di);
+
 
         System.out.printf("Size:%d%n", devices.size());
     }
